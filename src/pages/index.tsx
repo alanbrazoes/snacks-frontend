@@ -9,17 +9,19 @@ interface IUser {
 }
 
 const Home: NextPage = () => {
-  const [users, setUsers] = useState<IUser>({ name: 'Alan' });
+  const [users, setUsers] = useState<IUser[]>([]);
 
-  // useEffect(() => {
-  //   api.get<IUser[]>('/snacks').then((res) => {
-  //     setUsers(res.data);
-  //   });
-  // }, []);
+  useEffect(() => {
+    api.get<IUser[]>('/snacks').then((res) => {
+      setUsers(res.data);
+    });
+  }, []);
 
   return (
     <>
-      <User name={users.name} />
+      {users.map((value, i) => (
+        <User name={value.name} key={i} />
+      ))}
     </>
   );
 };
