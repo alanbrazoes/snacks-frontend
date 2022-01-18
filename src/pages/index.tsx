@@ -1,27 +1,31 @@
 import type { NextPage } from 'next';
 import { useEffect, useState } from 'react';
 
-import User from '@components/User';
+import Snack from '@components/Snacks';
 import api from '@services/api';
 
-interface IUser {
+interface ISnack {
+  _id: string;
   name: string;
+  preparationTime: number;
+  ingredients: [string];
 }
 
 const Home: NextPage = () => {
-  const [users, setUsers] = useState<IUser[]>([]);
+  const [snacks, setSnacks] = useState<ISnack[]>([]);
 
   useEffect(() => {
-    api.get<IUser[]>('/snacks').then((res) => {
-      setUsers(res.data);
+    api.get('/').then((res) => {
+      console.log(res.data[0].hamburguers);
+      setSnacks(res.data[0].hamburguers);
     });
   }, []);
 
   return (
     <>
-      {users.map((value, i) => (
-        <User name={value.name} key={i} />
-      ))}
+      {snacks.map((value, i) => {
+        return <Snack name={value.name} key={i} /> || <p>Oi</p>;
+      })}
     </>
   );
 };
