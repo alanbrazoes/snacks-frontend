@@ -1,10 +1,13 @@
 import { ISnacks } from '@types';
 import React from 'react';
 
-const Snack: React.FC<ISnacks> = ({ name }) => {
+const Snack: React.FC<ISnacks> = ({ name, preparationTime }) => {
   return (
     <>
-      <h1>{name}</h1>
+      <h2>{name}</h2>
+      <p>Tempo de preparação: {preparationTime} minutos</p>
+      <button> Comprar </button>
+      <button> Detalhes </button>
     </>
   );
 };

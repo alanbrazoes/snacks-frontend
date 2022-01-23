@@ -7,4 +7,5 @@ export interface ISnack {
 
 export interface ISnacks {
   name: string;
+  preparationTime: number;
 }

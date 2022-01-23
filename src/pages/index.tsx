@@ -19,8 +19,10 @@ const Home: NextPage = () => {
 
   return (
     <>
-      {snacks.map((value, i) => {
-        return <Snack name={value.name} key={i} /> || <p>Oi</p>;
+      {snacks.map(({ name, preparationTime }, i) => {
+        return (
+          <Snack name={name} preparationTime={preparationTime} key={i} /> || <p> Carregando... </p>
+        );
       })}
     </>
   );
