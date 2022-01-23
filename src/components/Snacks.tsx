@@ -1,13 +1,10 @@
+import { ISnacks } from '@types';
 import React from 'react';
 
-interface ISnacks {
-  name: string;
-}
-
-const Snack: React.FC<ISnacks> = (props) => {
+const Snack: React.FC<ISnacks> = ({ name }) => {
   return (
     <>
-      <h1>{props.name}</h1>
+      <h1>{name}</h1>
     </>
   );
 };

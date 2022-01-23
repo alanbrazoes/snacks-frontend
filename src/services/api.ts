@@ -1,7 +1,11 @@
-import axios from 'axios';
+import api from '@services/index';
 
-const api = axios.create({
-  baseURL: 'http://localhost:3333',
-});
-
-export default api;
+export const apiSnacks = () =>
+  api
+    .get('/')
+    .then((res) => {
+      return res.data[0].hamburguers;
+    })
+    .catch((error) => {
+      return error;
+    });

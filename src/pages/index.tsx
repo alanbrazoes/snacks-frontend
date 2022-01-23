@@ -1,24 +1,20 @@
 import type { NextPage } from 'next';
 import { useEffect, useState } from 'react';
+import { apiSnacks } from '@services/api';
 
 import Snack from '@components/Snacks';
-import api from '@services/api';
-
-interface ISnack {
-  _id: string;
-  name: string;
-  preparationTime: number;
-  ingredients: [string];
-}
+import { ISnack } from '@types';
 
 const Home: NextPage = () => {
   const [snacks, setSnacks] = useState<ISnack[]>([]);
 
   useEffect(() => {
-    api.get('/').then((res) => {
-      console.log(res.data[0].hamburguers);
-      setSnacks(res.data[0].hamburguers);
-    });
+    const teste = async () => {
+      const response = await apiSnacks();
+      setSnacks(response);
+    };
+
+    teste();
   }, []);
 
   return (
