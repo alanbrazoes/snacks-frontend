@@ -1,10 +1,13 @@
 import { NextPage } from 'next';
-import * as React from 'react';
+import React from 'react';
+import { useRouter } from 'next/router';
 
 const BurguerDetails: NextPage = () => {
+  const { query } = useRouter();
+
   return (
     <>
-      <h1>Olá mundo!!!</h1>
+      <h1>{query.id}</h1>
     </>
   );
 };
