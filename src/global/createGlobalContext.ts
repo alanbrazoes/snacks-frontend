@@ -1,9 +1,6 @@
+import { ISnack } from '@types';
 import { createContext } from 'react';
 
-interface IEx {
-  snack: string;
-}
-
-const GlobalContext = createContext<IEx>({ snack: 'oi' });
+const GlobalContext = createContext<ISnack[] | undefined>(undefined);
 
 export default GlobalContext;

@@ -1,12 +1,21 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import React from 'react';
 
-import GlobalContext from './createGlobalContext';
+import GlobalContext from '@global/createGlobalContext';
+import { ISnack } from '@types';
+import api from '@services/index';
 
 const Global: React.FC = ({ children }) => {
-  const [snack, setSnack] = useState({ snack: 'oi' });
+  const [snacks, setSnacks] = useState<ISnack[]>();
 
-  return <GlobalContext.Provider value={snack}>{children}</GlobalContext.Provider>;
+  useEffect(() => {
+    api
+      .get('/')
+      .then((res) => setSnacks(res.data))
+      .catch((err) => console.log(err));
+  }, []);
+
+  return <GlobalContext.Provider value={snacks}>{children}</GlobalContext.Provider>;
 };
 
 export default Global;
