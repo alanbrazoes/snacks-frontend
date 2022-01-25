@@ -1,12 +1,14 @@
-export interface ISnack {
+interface ISnack {
   _id: string;
   name: string;
   preparationTime: number;
-  ingredients: string[];
+  ingredients?: string[];
 }
 
-export interface ISnacks {
+interface ISnacks {
   name: string;
   preparationTime: number;
   _id: string;
 }
+
+export type { ISnack, ISnacks };

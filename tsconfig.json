@@ -6,7 +6,6 @@
       "@pages/*": ["./src/pages/*"],
       "@services/*": ["./src/services/*"],
       "@types": ["./src/types/types"],
-      "@shared": ["./src/shared/material-ui"],
       "@style/*": ["./src/style/*"]
     },
     "target": "es5",

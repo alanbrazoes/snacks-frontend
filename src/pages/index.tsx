@@ -1,12 +1,15 @@
 import type { NextPage } from 'next';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 import { apiSnacks } from '@services/api';
 import Snack from '@components/Snacks';
 import { ISnack } from '@types';
+import GlobalContext from 'src/global/createGlobalContext';
 
 const Home: NextPage = () => {
   const [snacks, setSnacks] = useState<ISnack[]>([]);
+
+  const { snack } = useContext(GlobalContext);
 
   useEffect(() => {
     const teste = async () => {
@@ -14,6 +17,7 @@ const Home: NextPage = () => {
       setSnacks(response);
     };
 
+    console.log(snack);
     teste();
   }, []);
 

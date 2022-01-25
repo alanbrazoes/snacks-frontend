@@ -1,14 +1,12 @@
-import { ThemeProvider } from '@shared';
-import { theme } from '@style/style-material';
-
 import type { AppProps } from 'next/app';
 import '@style/style.css';
+import Global from 'src/global/globalState';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ThemeProvider theme={theme}>
+    <Global>
       <Component {...pageProps} />
-    </ThemeProvider>
+    </Global>
   );
 }
 
