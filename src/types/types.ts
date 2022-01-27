@@ -11,4 +11,10 @@ interface ISnacks {
   _id: string;
 }
 
-export type { ISnack, ISnacks };
+interface IInput {
+  name: string;
+  onChange?: undefined;
+  value: string;
+}
+
+export type { ISnack, ISnacks, IInput };

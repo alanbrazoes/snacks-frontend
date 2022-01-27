@@ -18,12 +18,19 @@ const BurguerDetails: NextPage = () => {
         console.log(error);
       }
     };
+
     tes();
   }, []);
 
   return (
     <>
-      <h1>{query.id}</h1>
+      <header>
+        <h1>CB | Lanches</h1>
+      </header>
+
+      <h1>{snack?.name}</h1>
+      <p>Ingredientes: {snack?.ingredients?.join(', ')}.</p>
+      <button> Adicionar ao carrinho </button>
     </>
   );
 };
