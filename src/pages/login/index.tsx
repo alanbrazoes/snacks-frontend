@@ -2,6 +2,7 @@ import Input from '@components/Inputs';
 import { apiLogin } from '@services/api';
 import { NextPage } from 'next';
 import { useForm } from '@hooks/useForm';
+import Link from 'next/link';
 
 const Login: NextPage = () => {
   const [form, onChange] = useForm({
@@ -11,8 +12,8 @@ const Login: NextPage = () => {
 
   const submit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    const { email, password } = form;
-    await apiLogin({ email, password });
+    // const { email, password } = form;
+    // await apiLogin({ email, password });
   };
 
   return (
@@ -20,13 +21,18 @@ const Login: NextPage = () => {
       <fieldset>
         <legend>Login Administrativo</legend>
 
-        <label>Email</label>
-        <Input onChange={onChange} name={'email'} value={form.email} />
+        <Input onChange={onChange} name={'email'} value={form.email} label={'Digite seu email'} />
 
-        <label>Senha</label>
-        <Input onChange={onChange} name={'password'} value={form.password} />
+        <Input
+          onChange={onChange}
+          name={'password'}
+          value={form.password}
+          label={'Digite sua senha'}
+        />
 
-        <button type="submit">Entrar</button>
+        <Link href={'/createSnacks'}>
+          <button type="submit">Entrar</button>
+        </Link>
       </fieldset>
     </form>
   );

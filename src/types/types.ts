@@ -15,6 +15,8 @@ interface IInput {
   name: string;
   onChange?: undefined;
   value: string;
+  label: string;
+  type?: string;
 }
 
 interface ILogin {

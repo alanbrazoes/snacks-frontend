@@ -1,13 +1,18 @@
-import React, { useState } from 'react';
+import Link from 'next/link';
+import React from 'react';
 
 const CreateSnacks = () => {
-  const [typeSnack, setTypeSnack] = useState<string>('default');
-
   return (
     <>
-      <button>Drinks</button>
-      <button>Pratos</button>
-      <button>Hamburguers</button>
+      <Link href={'/createSnacks/burguer'}>
+        <button>Hamburguers</button>
+      </Link>
+      <Link href={'/createSnacks/dishes'}>
+        <button>Pratos</button>
+      </Link>
+      <Link href={'/createSnacks/drinks'}>
+        <button>Bebidas</button>
+      </Link>
     </>
   );
 };

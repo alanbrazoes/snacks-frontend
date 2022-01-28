@@ -1,4 +1,4 @@
-import { ISnack } from 'src/types/types';
+import { ISnack } from '@types';
 import React from 'react';
 import Link from 'next/link';
 
