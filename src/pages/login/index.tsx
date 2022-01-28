@@ -1,6 +1,7 @@
 import Input from '@components/Inputs';
+import { apiLogin } from '@services/api';
 import { NextPage } from 'next';
-import { useForm } from 'src/hooks/useForm';
+import { useForm } from '@hooks/useForm';
 
 const Login: NextPage = () => {
   const [form, onChange] = useForm({
@@ -8,9 +9,10 @@ const Login: NextPage = () => {
     password: '',
   });
 
-  const submit = (e: { preventDefault: () => void }): void => {
+  const submit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    console.log(form);
+    const { email, password } = form;
+    await apiLogin({ email, password });
   };
 
   return (

@@ -17,4 +17,9 @@ interface IInput {
   value: string;
 }
 
-export type { ISnack, ISnacks, IInput };
+interface ILogin {
+  email: string;
+  password: string;
+}
+
+export type { ISnack, ISnacks, IInput, ILogin };
