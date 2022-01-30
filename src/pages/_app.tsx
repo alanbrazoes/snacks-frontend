@@ -1,11 +1,15 @@
 import type { AppProps } from 'next/app';
-import '@style/style.css';
 import Global from 'src/global/globalState';
+import { CssBaseline, ThemeProvider } from '@shared/index';
+import { theme } from '@style/style-material';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Global>
-      <Component {...pageProps} />
+      <ThemeProvider theme={theme}>
+        <CssBaseline enableColorScheme={false} />
+        <Component {...pageProps} />
+      </ThemeProvider>
     </Global>
   );
 }

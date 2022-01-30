@@ -1,9 +1,10 @@
 import type { NextPage } from 'next';
 import { useContext } from 'react';
+import Link from 'next/link';
 
+import { Button } from '@shared/index';
 import Snack from '@components/Snacks';
 import GlobalContext from '@global/createGlobalContext';
-import Link from 'next/link';
 
 const Home: NextPage = () => {
   const snack = useContext(GlobalContext);
@@ -11,7 +12,7 @@ const Home: NextPage = () => {
   return (
     <>
       <Link href={'/login'}>
-        <button>Login</button>
+        <Button>Login</Button>
       </Link>
       {snack?.map(({ name, preparationTime, _id }, i) => {
         return <Snack name={name} preparationTime={preparationTime} _id={_id} key={i} /> || <></>;

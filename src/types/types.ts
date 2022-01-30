@@ -24,4 +24,10 @@ interface ILogin {
   password: string;
 }
 
-export type { ISnack, ISnacks, IInput, ILogin };
+interface ICreateBurguer {
+  name: string;
+  preparationTime: number;
+  ingredients: string[];
+}
+
+export type { ISnack, ISnacks, IInput, ILogin, ICreateBurguer };

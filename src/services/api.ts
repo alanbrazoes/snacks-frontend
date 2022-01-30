@@ -1,5 +1,5 @@
 import api from '@services/index';
-import { ILogin } from '@types';
+import { ILogin, ICreateBurguer } from '@types';
 
 export const apiSnacks = async () => {
   try {
@@ -13,7 +13,15 @@ export const apiSnacks = async () => {
 
 export const apiLogin = async ({ email, password }: ILogin) => {
   try {
-    const response = await api.post('/login', { email, password });
+    await api.post('/login', { email, password });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const apiCreateBurguer = async ({ name, preparationTime, ingredients }: ICreateBurguer) => {
+  try {
+    await api.post('/createburguer', { name, preparationTime, ingredients });
   } catch (error) {
     console.log(error);
   }

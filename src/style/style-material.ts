@@ -1,5 +1,5 @@
-import { orange, red } from '@material-ui/core/colors';
-import { createTheme } from '@shared';
+import { orange, red } from '@mui/material/colors';
+import { createTheme } from '@shared/index';
 
 const theme = createTheme({
   ligth: {
@@ -8,9 +8,18 @@ const theme = createTheme({
   status: {
     danger: orange[500],
   },
+  components: {
+    MuiCssBaseline: {
+      styleOverrides: `
+        body {
+          background-color: #f9fcfd;
+        }
+      `,
+    },
+  },
 });
 
-declare module '@material-ui/core/styles' {
+declare module '@mui/material/styles' {
   interface Theme {
     ligth: {
       primary: string;

@@ -10,7 +10,7 @@ const Global: React.FC = ({ children }) => {
 
   useEffect(() => {
     api
-      .get('/')
+      .get('/burguers')
       .then((res) => setSnacks(res.data))
       .catch((err) => console.log(err));
   }, []);
