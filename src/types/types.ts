@@ -2,7 +2,7 @@ interface ISnack {
   _id: string;
   name: string;
   preparationTime: number;
-  ingredients?: string[];
+  ingredients: string[];
 }
 
 interface ISnacks {
@@ -28,6 +28,8 @@ interface ICreateBurguer {
   name: string;
   preparationTime: number;
   ingredients: string[];
+  price?: number;
+  id?: string;
 }
 
 export type { ISnack, ISnacks, IInput, ILogin, ICreateBurguer };

@@ -1,8 +1,9 @@
-import Input from '@components/Inputs';
 import { apiLogin } from '@services/api';
 import { NextPage } from 'next';
 import { useForm } from '@hooks/useForm';
 import Link from 'next/link';
+import { Button, TextField } from '@shared/index';
+import styled from 'styled-components';
 
 const Login: NextPage = () => {
   const [form, onChange] = useForm({
@@ -18,22 +19,25 @@ const Login: NextPage = () => {
 
   return (
     <form onSubmit={submit}>
-      <fieldset>
-        <legend>Login Administrativo</legend>
+      <legend>Login Administrativo</legend>
 
-        <Input onChange={onChange} name={'email'} value={form.email} label={'Digite seu email'} />
+      <TextField onChange={onChange} name="email" value={form.email} label="Email" />
 
-        <Input
-          onChange={onChange}
-          name={'password'}
-          value={form.password}
-          label={'Digite sua senha'}
-        />
+      <TextField
+        value={form.password}
+        name="password"
+        onChange={onChange}
+        id="outlined-password-input"
+        label="Senha"
+        type="password"
+        autoComplete="current-password"
+      />
 
-        <Link href={'/createSnacks'}>
-          <button type="submit">Entrar</button>
-        </Link>
-      </fieldset>
+      <Link href={'/createSnacks'}>
+        <Button type="submit" variant="contained">
+          Entrar
+        </Button>
+      </Link>
     </form>
   );
 };

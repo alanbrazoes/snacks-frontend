@@ -1,5 +1,6 @@
 import { useForm } from '@hooks/useForm';
 import Input from '@components/Inputs';
+import drinksApi from '@services/drinksApi';
 
 const CreateDrinks = () => {
   const [form, onChange] = useForm({
@@ -10,6 +11,7 @@ const CreateDrinks = () => {
 
   const submit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
+    drinksApi.createDrink({ name, price });
   };
 
   return (

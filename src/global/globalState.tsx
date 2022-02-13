@@ -1,21 +1,31 @@
-import { useEffect, useState } from 'react';
-import React from 'react';
-
-import GlobalContext from '@global/createGlobalContext';
+import React, { useState, createContext } from 'react';
 import { ISnack } from '@types';
-import api from '@services/index';
+
+interface IPropsSnacksContext {
+  snacks: ISnack[];
+  setSnacks: React.Dispatch<React.SetStateAction<ISnack[]>>;
+}
+
+const DEFAULT_VALUE = {
+  snacks: [
+    {
+      _id: '',
+      name: '',
+      preparationTime: 0,
+      ingredients: [''],
+    },
+  ],
+  setSnacks: () => {
+    return null;
+  },
+};
+
+export const GlobalContext = createContext<IPropsSnacksContext>(DEFAULT_VALUE);
 
 const Global: React.FC = ({ children }) => {
-  const [snacks, setSnacks] = useState<ISnack[]>();
+  const [snacks, setSnacks] = useState(DEFAULT_VALUE.snacks);
 
-  useEffect(() => {
-    api
-      .get('/burguers')
-      .then((res) => setSnacks(res.data))
-      .catch((err) => console.log(err));
-  }, []);
-
-  return <GlobalContext.Provider value={snacks}>{children}</GlobalContext.Provider>;
+  return <GlobalContext.Provider value={{ snacks, setSnacks }}>{children}</GlobalContext.Provider>;
 };
 
 export default Global;
