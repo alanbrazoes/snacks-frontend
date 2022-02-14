@@ -1,5 +1,4 @@
 import { useForm } from '@hooks/useForm';
-import Input from '@components/Inputs';
 import drinksApi from '@services/drinksApi';
 
 const CreateDrinks = () => {
@@ -19,8 +18,11 @@ const CreateDrinks = () => {
       <form onSubmit={submit}>
         <fieldset>
           <legend>Adicionar bebidas</legend>
-          <Input name={'drink'} onChange={onChange} label={'Nome'} value={name} />
-          <Input name={'price'} onChange={onChange} label={'Preço'} value={price} type="number" />
+          <label>Nome</label>
+          <input name={'drink'} onChange={onChange} value={name} />
+
+          <label>Preço</label>
+          <input name={'price'} onChange={onChange} value={price} type="number" />
           <button type="submit">Adicionar</button>
         </fieldset>
       </form>

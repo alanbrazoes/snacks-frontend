@@ -9,7 +9,6 @@
       "@style/*": ["./src/style/*"],
       "@global/*": ["./src/global/*"],
       "@hooks/*": ["./src/hooks/*"],
-      "@shared/*":["./src/shared/*"]
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],

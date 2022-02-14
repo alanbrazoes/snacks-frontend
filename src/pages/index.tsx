@@ -1,42 +1,54 @@
 import type { NextPage } from 'next';
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Link from 'next/link';
 import api from '@services/index';
 
-import { Button } from '@shared/index';
 import Snack from '@components/Snacks';
 import { GlobalContext } from '@global/globalState';
+import styled from 'styled-components';
 
 const Home: NextPage = () => {
   const { snacks, setSnacks } = useContext(GlobalContext);
+  const [error, setError] = useState<boolean>(false);
 
   useEffect(() => {
-    console.log('aqui');
     api
       .get('/burguers')
       .then((res) => setSnacks(res.data))
-      .catch((err) => console.log(err));
+      .catch(() => setError(true));
   }, []);
+
+  const Main = styled.main`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  `;
 
   return (
     <>
-      <Link href={'/login'}>
-        <Button>Login</Button>
-      </Link>
+      <header>
+        <Link href={'/login'}>
+          <button>Login</button>
+        </Link>
+      </header>
 
-      {snacks?.map(({ name, preparationTime, _id, ingredients }) => {
-        return (
-          (
-            <Snack
-              name={name}
-              preparationTime={preparationTime}
-              _id={_id}
-              ingredients={ingredients}
-              key={_id}
-            />
-          ) || <></>
-        );
-      })}
+      <Main>
+        {error ? (
+          <p>Algo deu errado</p>
+        ) : (
+          snacks?.map(({ name, preparationTime, _id, ingredients }) => {
+            return (
+              <Snack
+                name={name}
+                preparationTime={preparationTime}
+                _id={_id}
+                ingredients={ingredients}
+                key={_id}
+              />
+            );
+          })
+        )}
+      </Main>
     </>
   );
 };

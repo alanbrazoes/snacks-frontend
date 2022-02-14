@@ -6,6 +6,7 @@ import styled from 'styled-components';
 const CreateBurguer = () => {
   const [ingredients, setIngredientsList] = useState<string[]>([]);
   const [ingredient, setIngredient] = useState<string>('');
+  const [sucess, setSucess] = useState<boolean>(false);
 
   const [form, onChange] = useForm({
     name: '',
@@ -15,9 +16,14 @@ const CreateBurguer = () => {
 
   const { name, preparationTime, price } = form;
 
-  const submit = (e: React.ChangeEvent<HTMLFormElement>) => {
+  const submit = async (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
-    burguerApi.createBurguer({ name, preparationTime, ingredients });
+    try {
+      await burguerApi.createBurguer({ name, preparationTime, ingredients });
+      setSucess(true);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const changeIngredients = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -73,6 +79,7 @@ const CreateBurguer = () => {
           </P>
         );
       })}
+      {sucess && <p>Criado com sucesso!!</p>}
     </>
   );
 };
