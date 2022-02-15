@@ -43,7 +43,13 @@ input {
 
 section {
   border: 1px solid black;
-  width: max-content;
+  width: fit-content;
   padding: 4px;
   margin: 2px;
+  min-width: 20%;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
 }

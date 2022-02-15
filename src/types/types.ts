@@ -3,6 +3,7 @@ interface ISnack {
   name: string;
   preparationTime: number;
   ingredients: string[];
+  price: number;
 }
 
 interface ISnacks {

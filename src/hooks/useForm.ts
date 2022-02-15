@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-export const useForm = (inicialState: any) => {
-  const [form, setForm] = useState(inicialState);
+export const useForm = (initialState: any) => {
+  const [form, setForm] = useState(initialState);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;

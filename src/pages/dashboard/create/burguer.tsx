@@ -19,7 +19,7 @@ const CreateBurguer = () => {
   const submit = async (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      await burguerApi.createBurguer({ name, preparationTime, ingredients });
+      await burguerApi.createBurguer({ name, preparationTime, ingredients, price });
       setSucess(true);
     } catch (error) {
       console.log(error);
@@ -36,6 +36,11 @@ const CreateBurguer = () => {
       setIngredientsList([newValue, ...ingredients]);
       setIngredient('');
     }
+  };
+
+  const removeIngredient = (ingredientRemove: string): void => {
+    const newIngredients = ingredients.filter((ingredient) => ingredient !== ingredientRemove);
+    setIngredientsList(newIngredients);
   };
 
   const P = styled.p`
@@ -75,7 +80,7 @@ const CreateBurguer = () => {
         return (
           <P key={index}>
             {ingredient}
-            <strong>X</strong>
+            <button onClick={() => removeIngredient(ingredient)}>X</button>
           </P>
         );
       })}

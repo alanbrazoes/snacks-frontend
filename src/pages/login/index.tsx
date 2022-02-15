@@ -14,7 +14,7 @@ const Login: NextPage = () => {
     e.preventDefault();
     // const { email, password } = form;
     // await apiLogin({ email, password });
-    router.push('/createSnacks');
+    router.push('/dashboard');
   };
 
   return (

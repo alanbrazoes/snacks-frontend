@@ -14,12 +14,16 @@ const Home: NextPage = () => {
   useEffect(() => {
     api
       .get('/burguers')
-      .then((res) => setSnacks(res.data))
+      .then((res) => {
+        console.log(res.data);
+        setSnacks(res.data);
+      })
       .catch(() => setError(true));
   }, []);
 
   const Main = styled.main`
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
   `;
@@ -27,16 +31,22 @@ const Home: NextPage = () => {
   return (
     <>
       <header>
-        <Link href={'/login'}>
-          <button>Login</button>
-        </Link>
+        <h1>CB|Lanches</h1>
+        <nav>
+          <Link href={'/login'}>
+            <button>Login</button>
+          </Link>
+          <Link href={'/cart'}>
+            <button> Carrinho </button>
+          </Link>
+        </nav>
       </header>
 
       <Main>
         {error ? (
           <p>Algo deu errado</p>
         ) : (
-          snacks?.map(({ name, preparationTime, _id, ingredients }) => {
+          snacks?.map(({ name, preparationTime, _id, ingredients, price }) => {
             return (
               <Snack
                 name={name}
@@ -44,6 +54,7 @@ const Home: NextPage = () => {
                 _id={_id}
                 ingredients={ingredients}
                 key={_id}
+                price={price}
               />
             );
           })

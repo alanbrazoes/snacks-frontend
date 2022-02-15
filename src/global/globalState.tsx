@@ -13,6 +13,7 @@ const DEFAULT_VALUE = {
       name: '',
       preparationTime: 0,
       ingredients: [''],
+      price: 0,
     },
   ],
   setSnacks: () => {

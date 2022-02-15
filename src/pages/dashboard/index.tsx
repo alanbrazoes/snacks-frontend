@@ -4,13 +4,13 @@ import React from 'react';
 const CreateSnacks = () => {
   return (
     <>
-      <Link href={'/createSnacks/burguer'}>
+      <Link href={'/dashboard/create/burguer'}>
         <button>Hamburguers</button>
       </Link>
-      <Link href={'/createSnacks/dishes'}>
+      <Link href={'/dashboard/create/dishes'}>
         <button>Pratos</button>
       </Link>
-      <Link href={'/createSnacks/drinks'}>
+      <Link href={'/dashboard/create/drink'}>
         <button>Bebidas</button>
       </Link>
     </>

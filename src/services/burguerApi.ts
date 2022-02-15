@@ -20,9 +20,9 @@ export default {
     }
   },
 
-  async createBurguer({ name, preparationTime, ingredients }: ICreateBurguer) {
+  async createBurguer({ name, preparationTime, ingredients, price }: ICreateBurguer) {
     try {
-      await api.post('/create/burguer', { name, preparationTime, ingredients });
+      await api.post('/create/burguer', { name, preparationTime, ingredients, price });
       console.log('foi');
     } catch (error) {
       console.log(error);
