@@ -1,4 +1,3 @@
-import { apiLogin } from '@services/api';
 import { NextPage } from 'next';
 import { useForm } from '@hooks/useForm';
 import { useRouter } from 'next/router';
@@ -12,8 +11,6 @@ const Login: NextPage = () => {
 
   const submit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    // const { email, password } = form;
-    // await apiLogin({ email, password });
     router.push('/dashboard');
   };
 

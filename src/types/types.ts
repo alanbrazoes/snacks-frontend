@@ -33,4 +33,9 @@ interface ICreateBurguer {
   id?: string;
 }
 
-export type { ISnack, ISnacks, IInput, ILogin, ICreateBurguer };
+interface IPropsSnacksContext {
+  snacks: ISnack[];
+  setSnacks: React.Dispatch<React.SetStateAction<ISnack[]>>;
+}
+
+export type { ISnack, ISnacks, IInput, ILogin, ICreateBurguer, IPropsSnacksContext };

@@ -4,15 +4,29 @@ import React from 'react';
 const CreateSnacks = () => {
   return (
     <>
-      <Link href={'/dashboard/create/burguer'}>
-        <button>Hamburguers</button>
-      </Link>
-      <Link href={'/dashboard/create/dishes'}>
-        <button>Pratos</button>
-      </Link>
-      <Link href={'/dashboard/create/drink'}>
-        <button>Bebidas</button>
-      </Link>
+      <fieldset>
+        <legend> Hamburguers </legend>
+        <button>Ver</button>
+        <Link href={'/dashboard/create/burguer'}>
+          <button>Criar</button>
+        </Link>
+      </fieldset>
+
+      <fieldset>
+        <legend> Pratos </legend>
+        <button>Ver</button>
+        <Link href={'/dashboard/create/dishes'}>
+          <button>Criar</button>
+        </Link>
+      </fieldset>
+
+      <fieldset>
+        <legend> Bebidas </legend>
+        <button>Ver</button>
+        <Link href={'/dashboard/create/drink'}>
+          <button>Criar</button>
+        </Link>
+      </fieldset>
     </>
   );
 };

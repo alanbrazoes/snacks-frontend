@@ -15,7 +15,6 @@ const Home: NextPage = () => {
     api
       .get('/burguers')
       .then((res) => {
-        console.log(res.data);
         setSnacks(res.data);
       })
       .catch(() => setError(true));

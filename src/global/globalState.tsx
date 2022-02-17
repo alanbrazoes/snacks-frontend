@@ -1,10 +1,5 @@
 import React, { useState, createContext } from 'react';
-import { ISnack } from '@types';
-
-interface IPropsSnacksContext {
-  snacks: ISnack[];
-  setSnacks: React.Dispatch<React.SetStateAction<ISnack[]>>;
-}
+import { IPropsSnacksContext } from '@types';
 
 const DEFAULT_VALUE = {
   snacks: [
