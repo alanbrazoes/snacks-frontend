@@ -19,8 +19,16 @@ module.exports = {
     ecmaVersion: 11,
     sourceType: 'module',
   },
-  plugins: ['@typescript-eslint'],
+  plugins: ['@typescript-eslint', 'import-helpers'],
   rules: {
     '@typescript-eslint/no-var-requires': 0,
+    'import-helpers/order-imports': [
+      'warn',
+      {
+        newlinesBetween: 'always', // new line between groups
+        groups: ['/^react/', '/^next/', 'module', ['parent', 'sibling', 'index']],
+        alphabetize: { order: 'asc', ignoreCase: true },
+      },
+    ],
   },
 };

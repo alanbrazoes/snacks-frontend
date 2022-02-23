@@ -1,10 +1,11 @@
-import type { NextPage } from 'next';
 import { useContext, useEffect, useState } from 'react';
+
+import type { NextPage } from 'next';
 import Link from 'next/link';
-import api from '@services/index';
 
 import Snack from '@components/Snacks';
-import { GlobalContext } from '@global/globalState';
+import { GlobalContext } from '@context/globalState';
+import api from '@services/index';
 import styled from 'styled-components';
 
 const Home: NextPage = () => {

@@ -1,4 +1,5 @@
 import React, { useState, createContext } from 'react';
+
 import { IPropsSnacksContext } from '@types';
 
 const DEFAULT_VALUE = {

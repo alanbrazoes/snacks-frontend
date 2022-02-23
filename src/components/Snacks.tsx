@@ -1,6 +1,8 @@
-import { ISnack } from '@types';
 import React from 'react';
+
 import Link from 'next/link';
+
+import { ISnack } from '@types';
 
 const Snack: React.FC<ISnack> = ({ name, preparationTime, _id, price }) => {
   return (

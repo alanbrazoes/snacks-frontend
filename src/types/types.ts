@@ -6,12 +6,6 @@ interface ISnack {
   price: number;
 }
 
-interface ISnacks {
-  name: string;
-  preparationTime: number;
-  _id: string;
-}
-
 interface IInput {
   name: string;
   onChange?: undefined;
@@ -38,4 +32,4 @@ interface IPropsSnacksContext {
   setSnacks: React.Dispatch<React.SetStateAction<ISnack[]>>;
 }
 
-export type { ISnack, ISnacks, IInput, ILogin, ICreateBurguer, IPropsSnacksContext };
+export type { ISnack, IInput, ILogin, ICreateBurguer, IPropsSnacksContext };
