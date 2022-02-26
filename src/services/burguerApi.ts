@@ -1,5 +1,5 @@
-import { ICreateBurguer } from '@types';
 import api from '@services/index';
+import { ICreateBurguer } from '@types';
 
 export default {
   async getAllBurguers() {

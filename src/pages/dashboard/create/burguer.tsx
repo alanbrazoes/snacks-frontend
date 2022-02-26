@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { useForm } from '@hooks/useForm';
 import burguerApi from '@services/burguerApi';
-import styled from 'styled-components';
+import { Ingredient } from '@style/createStyle';
 
 const CreateBurguer = () => {
   const [ingredients, setIngredientsList] = useState<string[]>([]);
@@ -44,13 +44,6 @@ const CreateBurguer = () => {
     setIngredientsList(newIngredients);
   };
 
-  const P = styled.p`
-    display: inline;
-    border: 1px solid black;
-    margin: 8px 4px;
-    padding: 4px;
-  `;
-
   return (
     <>
       <form onSubmit={submit}>
@@ -79,10 +72,10 @@ const CreateBurguer = () => {
 
       {ingredients.map((ingredient, index) => {
         return (
-          <P key={index}>
+          <Ingredient key={index}>
             {ingredient}
             <button onClick={() => removeIngredient(ingredient)}>X</button>
-          </P>
+          </Ingredient>
         );
       })}
       {sucess && <p>Criado com sucesso!!</p>}

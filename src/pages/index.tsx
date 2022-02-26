@@ -6,7 +6,7 @@ import Link from 'next/link';
 import Snack from '@components/Snacks';
 import { GlobalContext } from '@context/globalState';
 import api from '@services/index';
-import styled from 'styled-components';
+import { Main } from '@style/indexStyle';
 
 const Home: NextPage = () => {
   const { snacks, setSnacks } = useContext(GlobalContext);
@@ -16,17 +16,11 @@ const Home: NextPage = () => {
     api
       .get('/burguers')
       .then((res) => {
+        console.log(res.data);
         setSnacks(res.data);
       })
       .catch(() => setError(true));
   }, []);
-
-  const Main = styled.main`
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-  `;
 
   return (
     <>
