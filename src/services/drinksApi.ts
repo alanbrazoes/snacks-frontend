@@ -1,54 +1,49 @@
 import api from '@services/index';
+import { IDrink } from '@types';
 
 export default {
   async getAllDrinks() {
     try {
-      const data = await api.get('/drinks');
-      console.log(data);
+      const response = await api.get('/drinks');
+      return response.data;
     } catch (error) {
-      console.log(error);
+      return false;
     }
   },
 
   async getDrink(id: string) {
     try {
-      const data = await api.get(`/drink/${id}`);
-      console.log(data);
+      const response = await api.get(`/drink/${id}`);
+      return response.data;
     } catch (error) {
-      console.log(error);
+      return false;
     }
   },
 
   async createDrink({ name, price }: IDrink) {
     try {
       await api.post('/create/drink', { name, price });
-      console.log('foi');
+      return true;
     } catch (error) {
-      console.log(error);
+      return false;
     }
   },
 
   async updateDrink({ name, price, id }: IDrink) {
     try {
       await api.put(`/drink/update/${id}`, { name, price });
-      console.log('foi');
+      return true;
     } catch (error) {
-      console.log(error);
+      return false;
     }
   },
 
   async deleteDrink(id: string) {
     try {
       await api.delete(`/drink/delete/${id}`);
-      console.log('foi');
+      return true;
     } catch (error) {
-      console.log(error);
+      return false;
     }
   },
 };
-
-interface IDrink {
-  name: string;
-  price: number;
-  id?: string;
-}

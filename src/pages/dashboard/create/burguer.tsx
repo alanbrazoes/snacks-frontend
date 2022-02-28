@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { useForm } from '@hooks/useForm';
 import burguerApi from '@services/burguerApi';
@@ -8,22 +8,40 @@ const CreateBurguer = () => {
   const [ingredients, setIngredientsList] = useState<string[]>([]);
   const [ingredient, setIngredient] = useState<string>('');
   const [sucess, setSucess] = useState<boolean>(false);
+  const [error, setError] = useState(false);
 
-  const [form, onChange] = useForm({
+  const [form, onChange, resetForm] = useForm({
     name: '',
     preparationTime: 0,
+    // ingredients: {ingredient: '', ingredientList: []},
     price: 0,
+    type: 'burguer',
   });
 
-  const { name, preparationTime, price } = form;
+  useEffect(() => {
+    if (sucess)
+      setTimeout(() => {
+        setSucess(false);
+      }, 5000);
+  }, [sucess]);
+
+  const { name, preparationTime, price, type } = form;
 
   const submit = async (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      await burguerApi.createBurguer({ name, preparationTime, ingredients, price });
+      await burguerApi.createBurguer({ name, preparationTime, ingredients, price, type });
       setSucess(true);
+      setIngredientsList([]);
+      resetForm({
+        name: '',
+        preparationTime: 0,
+        // ingredients: {ingredient: '', ingredientList: []},
+        price: 0,
+        type: 'burguer',
+      });
     } catch (error) {
-      console.log(error);
+      setError(true);
     }
   };
 
@@ -70,15 +88,14 @@ const CreateBurguer = () => {
         </fieldset>
       </form>
 
-      {ingredients.map((ingredient, index) => {
-        return (
-          <Ingredient key={index}>
-            {ingredient}
-            <button onClick={() => removeIngredient(ingredient)}>X</button>
-          </Ingredient>
-        );
-      })}
+      {ingredients.map((ingredient, index) => (
+        <Ingredient key={index}>
+          {ingredient}
+          <button onClick={() => removeIngredient(ingredient)}>X</button>
+        </Ingredient>
+      ))}
       {sucess && <p>Criado com sucesso!!</p>}
+      {error && <p>Ops...</p>}
     </>
   );
 };

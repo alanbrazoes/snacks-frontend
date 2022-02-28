@@ -30,5 +30,7 @@ module.exports = {
         alphabetize: { order: 'asc', ignoreCase: true },
       },
     ],
+    'no-console': [1, { allow: ['warn', 'error'] }],
+    '@typescript-eslint/no-explicit-any': 'off',
   },
 };

@@ -20,6 +20,7 @@ interface ILogin {
 }
 
 interface ICreateBurguer {
+  type: string;
   name: string;
   preparationTime: number;
   ingredients: string[];
@@ -32,4 +33,10 @@ interface IPropsSnacksContext {
   setSnacks: React.Dispatch<React.SetStateAction<ISnack[]>>;
 }
 
-export type { ISnack, IInput, ILogin, ICreateBurguer, IPropsSnacksContext };
+interface IDrink {
+  name: string;
+  price: number;
+  id?: string;
+}
+
+export type { ISnack, IInput, ILogin, ICreateBurguer, IPropsSnacksContext, IDrink };
