@@ -1,25 +1,34 @@
 import React, { useState } from 'react';
 
-interface IForm {
-  name: string;
-  preparationTime: number;
-  ingredients?: { ingredient: string; ingredienList: string[] };
-  price: number;
-  type: string;
-}
+import { IForm } from '@types';
 
 export const useForm = (initialState: any) => {
   const [form, setForm] = useState(initialState);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    if (name === 'ingredients') {
-      console.log(value);
-    }
     const newValue = value;
     const fieldName = name;
 
-    setForm({ ...form, [fieldName]: newValue });
+    if (name === 'ingredients') {
+      const {
+        ingredients: { ingredient, ingredientList },
+      } = form;
+
+      if (value.includes(',')) {
+        setForm({
+          ...form,
+          [fieldName]: { ingredient: '', ingredientList: [...ingredientList, ingredient] },
+        });
+      } else {
+        setForm({
+          ...form,
+          [fieldName]: { ingredient: value, ingredientList: [...ingredientList] },
+        });
+      }
+    } else {
+      setForm({ ...form, [fieldName]: newValue });
+    }
   };
 
   const resetForm = (state: IForm) => {

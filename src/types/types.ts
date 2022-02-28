@@ -23,7 +23,7 @@ interface ICreateBurguer {
   type: string;
   name: string;
   preparationTime: number;
-  ingredients: string[];
+  ingredientList: string[];
   price?: number;
   id?: string;
 }
@@ -39,4 +39,12 @@ interface IDrink {
   id?: string;
 }
 
-export type { ISnack, IInput, ILogin, ICreateBurguer, IPropsSnacksContext, IDrink };
+interface IForm {
+  name: string;
+  preparationTime: number;
+  ingredients: { ingredient: string; ingredienList: Array<unknown> };
+  price: number;
+  type: string;
+}
+
+export type { ISnack, IInput, ILogin, ICreateBurguer, IPropsSnacksContext, IDrink, IForm };

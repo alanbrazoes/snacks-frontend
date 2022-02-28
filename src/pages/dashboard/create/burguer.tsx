@@ -5,15 +5,13 @@ import burguerApi from '@services/burguerApi';
 import { Ingredient } from '@style/createStyle';
 
 const CreateBurguer = () => {
-  const [ingredients, setIngredientsList] = useState<string[]>([]);
-  const [ingredient, setIngredient] = useState<string>('');
   const [sucess, setSucess] = useState<boolean>(false);
   const [error, setError] = useState(false);
 
   const [form, onChange, resetForm] = useForm({
     name: '',
     preparationTime: 0,
-    // ingredients: {ingredient: '', ingredientList: []},
+    ingredients: { ingredient: '', ingredientList: [''] },
     price: 0,
     type: 'burguer',
   });
@@ -25,41 +23,29 @@ const CreateBurguer = () => {
       }, 5000);
   }, [sucess]);
 
-  const { name, preparationTime, price, type } = form;
+  const {
+    name,
+    preparationTime,
+    price,
+    type,
+    ingredients: { ingredient, ingredientList },
+  } = form;
 
   const submit = async (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      await burguerApi.createBurguer({ name, preparationTime, ingredients, price, type });
+      await burguerApi.createBurguer({ name, preparationTime, ingredientList, price, type });
       setSucess(true);
-      setIngredientsList([]);
       resetForm({
         name: '',
         preparationTime: 0,
-        // ingredients: {ingredient: '', ingredientList: []},
+        ingredients: { ingredient: '', ingredientList: [] },
         price: 0,
         type: 'burguer',
       });
     } catch (error) {
       setError(true);
     }
-  };
-
-  const changeIngredients = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
-
-    const { value } = e.target;
-    setIngredient(value);
-    if (value.includes(',') && value.length > 1) {
-      const newValue = value.replace(',', ' ');
-      setIngredientsList([newValue, ...ingredients]);
-      setIngredient('');
-    }
-  };
-
-  const removeIngredient = (ingredientRemove: string): void => {
-    const newIngredients = ingredients.filter((ingredient) => ingredient !== ingredientRemove);
-    setIngredientsList(newIngredients);
   };
 
   return (
@@ -79,7 +65,7 @@ const CreateBurguer = () => {
           />
 
           <label>Quais ingredientes são utilizados</label>
-          <input name={'ingredients'} onChange={changeIngredients} value={ingredient} />
+          <input name={'ingredients'} onChange={onChange} value={ingredient} />
 
           <label>Preço</label>
           <input type={'number'} name={'price'} onChange={onChange} value={price} />
@@ -88,12 +74,15 @@ const CreateBurguer = () => {
         </fieldset>
       </form>
 
-      {ingredients.map((ingredient, index) => (
-        <Ingredient key={index}>
-          {ingredient}
-          <button onClick={() => removeIngredient(ingredient)}>X</button>
-        </Ingredient>
-      ))}
+      {ingredientList?.map((ingredient: string, index: number) => {
+        if (ingredient)
+          return (
+            <Ingredient key={index}>
+              {ingredient}
+              <button>X</button>
+            </Ingredient>
+          );
+      })}
       {sucess && <p>Criado com sucesso!!</p>}
       {error && <p>Ops...</p>}
     </>
