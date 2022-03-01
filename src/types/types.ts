@@ -18,7 +18,14 @@ interface ILogin {
   email: string;
   password: string;
 }
-
+interface ICreateDishes {
+  _id?: string;
+  name: string;
+  price: number;
+  ingredientList: string[];
+  preparationTime: number;
+  type: string;
+}
 interface ICreateBurguer {
   type: string;
   name: string;
@@ -47,4 +54,23 @@ interface IForm {
   type: string;
 }
 
-export type { ISnack, IInput, ILogin, ICreateBurguer, IPropsSnacksContext, IDrink, IForm };
+interface IDishes {
+  _id: string;
+  name: string;
+  price: number;
+  ingredientList: string[];
+  preparationTime: number;
+  type: string;
+}
+
+export type {
+  ISnack,
+  IInput,
+  ILogin,
+  ICreateBurguer,
+  IPropsSnacksContext,
+  IDrink,
+  IForm,
+  IDishes,
+  ICreateDishes,
+};

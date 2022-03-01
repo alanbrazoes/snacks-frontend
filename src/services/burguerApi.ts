@@ -20,18 +20,18 @@ export default {
     }
   },
 
-  async createBurguer({ name, preparationTime, ingredients, price, type }: ICreateBurguer) {
+  async createBurguer({ name, preparationTime, ingredientList, price, type }: ICreateBurguer) {
     try {
-      await api.post('/create/burguer', { name, preparationTime, ingredients, price, type });
+      await api.post('/create/burguer', { name, preparationTime, ingredientList, price, type });
       return true;
     } catch (error) {
       return false;
     }
   },
 
-  async updateBurguer({ name, preparationTime, ingredients, id }: ICreateBurguer) {
+  async updateBurguer({ name, preparationTime, ingredientList, id }: ICreateBurguer) {
     try {
-      await api.put(`/burguer/update/${id}`, { name, preparationTime, ingredients });
+      await api.put(`/burguer/update/${id}`, { name, preparationTime, ingredientList });
       return true;
     } catch (error) {
       return false;
