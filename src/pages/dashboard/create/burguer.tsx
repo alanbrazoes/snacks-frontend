@@ -5,13 +5,13 @@ import burguerApi from '@services/burguerApi';
 import { Ingredient } from '@style/createStyle';
 
 const CreateBurguer = () => {
-  const [sucess, setSucess] = useState<boolean>(false);
+  const [sucess, setSucess] = useState(false);
   const [error, setError] = useState(false);
 
-  const [form, onChange, resetForm] = useForm({
+  const [form, onChange, resetForm, removeIngredient] = useForm({
     name: '',
     preparationTime: 0,
-    ingredients: { ingredient: '', ingredientList: [''] },
+    ingredients: { ingredient: '', ingredientList: [] },
     price: 0,
     type: 'burguer',
   });
@@ -74,15 +74,12 @@ const CreateBurguer = () => {
         </fieldset>
       </form>
 
-      {ingredientList?.map((ingredient: string, index: number) => {
-        if (ingredient)
-          return (
-            <Ingredient key={index}>
-              {ingredient}
-              <button>X</button>
-            </Ingredient>
-          );
-      })}
+      {ingredientList?.map((ingredient: string, index: number) => (
+        <Ingredient key={index}>
+          {ingredient}
+          <button onClick={() => removeIngredient(ingredient)}>X</button>
+        </Ingredient>
+      ))}
       {sucess && <p>Criado com sucesso!!</p>}
       {error && <p>Ops...</p>}
     </>
