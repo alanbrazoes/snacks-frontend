@@ -10,7 +10,7 @@ import { ISnack } from '@types';
 
 const Home: NextPage = () => {
   const [snacks, setSnacks] = useState<ISnack[]>();
-  const [error, setError] = useState<boolean>(false);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     api

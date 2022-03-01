@@ -8,7 +8,7 @@
 button {
   padding: 4px 8px;
   margin: 4px 0;
-  background-color: blue;
+  background-color: #ef233c;
   size: 2rem; 
   border: none;
   color: white;
@@ -18,7 +18,7 @@ button {
 }
 
 button:hover {
-  background-color: rgb(0, 0, 151);
+  background-color: #ca2437;
   transition: 0.2s;
 }
 

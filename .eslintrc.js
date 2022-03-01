@@ -19,7 +19,7 @@ module.exports = {
     ecmaVersion: 11,
     sourceType: 'module',
   },
-  plugins: ['@typescript-eslint', 'import-helpers'],
+  plugins: ['@typescript-eslint', 'import-helpers', 'styled-components-config'],
   rules: {
     '@typescript-eslint/no-var-requires': 0,
     'import-helpers/order-imports': [
@@ -32,5 +32,6 @@ module.exports = {
     ],
     'no-console': [1, { allow: ['warn', 'error'] }],
     '@typescript-eslint/no-explicit-any': 'off',
+    'styled-components-config/rule-name': 0,
   },
 };

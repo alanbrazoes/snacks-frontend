@@ -2,22 +2,22 @@ import React from 'react';
 
 import Link from 'next/link';
 
+import { Card } from '@style/componentsStyle/BurguerCard';
 import { ButtonsContainer } from '@style/snacksCardStyle';
 import { ISnack } from '@types';
 
 const Snack: React.FC<ISnack> = ({ name, preparationTime, _id, price }) => {
   return (
-    <section>
-      <h2>{name}</h2>
-      <p>Tempo de preparo: {preparationTime} minutos.</p>
-      <h3> R${price}</h3>
-      <ButtonsContainer>
-        <button>Comprar</button>
-        <Link href={`/burguer/${_id}`}>
-          <button>Detalhes</button>
-        </Link>
-      </ButtonsContainer>
-    </section>
+    <Link href={`/burguer/${_id}`}>
+      <Card>
+        <h2>{name}</h2>
+        <p>Tempo de preparo: {preparationTime} minutos.</p>
+        <ButtonsContainer>
+          <h3>Preço: {price}</h3>
+          <button>Comprar</button>
+        </ButtonsContainer>
+      </Card>
+    </Link>
   );
 };
 

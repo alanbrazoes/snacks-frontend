@@ -80,7 +80,7 @@ const CreateBurguer = () => {
           <button onClick={() => removeIngredient(ingredient)}>X</button>
         </Ingredient>
       ))}
-      {sucess && <p>Criado com sucesso!!</p>}
+      {sucess && <p>Hamburguer criado com sucesso!!!</p>}
       {error && <p>Ops...</p>}
     </>
   );

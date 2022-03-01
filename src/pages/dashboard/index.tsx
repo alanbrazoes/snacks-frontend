@@ -4,14 +4,14 @@ import Link from 'next/link';
 
 import BurguerCardAdm from '@components/BurguerCardAdm';
 import api from '@services/index';
-import { Header, FieldSet } from '@style/dashboardStyle';
+import { Header, FieldSet, Main } from '@style/dashboardStyle';
 import { ISnack } from '@types';
 
 const CreateSnacks = () => {
-  const [isSelect, setIsSelect] = useState<string>('default');
+  const [isSelect, setIsSelect] = useState('default');
   const [type, setType] = useState<ISnack[] | null>(null);
-  const [error, setError] = useState<boolean>(false);
-  const [reload, setReload] = useState<boolean>(false);
+  const [error, setError] = useState(false);
+  const [reload, setReload] = useState(false);
 
   useEffect(() => {
     if (isSelect === 'burguer') {
@@ -32,7 +32,7 @@ const CreateSnacks = () => {
         <h1>CB | Lanches</h1>
         <button>Sair</button>
       </Header>
-      <main>
+      <Main>
         <FieldSet>
           <legend> Hamburguers </legend>
           <button onClick={() => setIsSelect('burguer')}>Ver</button>
@@ -62,7 +62,7 @@ const CreateSnacks = () => {
         {type?.map((snack) => (
           <BurguerCardAdm {...snack} isReload={isReload} />
         ))}
-      </main>
+      </Main>
     </>
   );
 };

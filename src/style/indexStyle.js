@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
 export const Main = styled.main`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
 `;
