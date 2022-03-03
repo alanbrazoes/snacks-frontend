@@ -42,10 +42,10 @@ const Home: NextPage = () => {
       <header>
         <h1>CB|Lanches</h1>
         <nav>
-          <Link href={'/login'}>
+          <Link href={'/login'} passHref>
             <button>Login</button>
           </Link>
-          <Link href={'/cart'}>
+          <Link href={'/cart'} passHref>
             <button> Carrinho </button>
           </Link>
         </nav>

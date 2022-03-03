@@ -2,8 +2,8 @@
   "name": "first-ts",
   "private": true,
   "scripts": {
-    "dev": "clear && next dev",
-    "build": "clear && next build",
+    "dev": "next dev",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
@@ -21,6 +21,7 @@
     "ts-loader": "^9.2.6"
   },
   "devDependencies": {
+    "@next/eslint-plugin-next": "^12.1.0",
     "@types/node": "17.0.5",
     "@types/react": "17.0.38",
     "@typescript-eslint/eslint-plugin": "^5.9.1",

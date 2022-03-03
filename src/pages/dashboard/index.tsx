@@ -36,7 +36,7 @@ const CreateSnacks = () => {
         <FieldSet>
           <legend> Hamburguers </legend>
           <button onClick={() => setIsSelect('burguer')}>Ver</button>
-          <Link href={'/dashboard/create/burguer'}>
+          <Link href={'/dashboard/create/burguer'} passHref>
             <button>Criar</button>
           </Link>
         </FieldSet>
@@ -44,7 +44,7 @@ const CreateSnacks = () => {
         <FieldSet>
           <legend> Pratos </legend>
           <button onClick={() => setIsSelect('dishes')}>Ver</button>
-          <Link href={'/dashboard/create/dishes'}>
+          <Link href={'/dashboard/create/dishes'} passHref>
             <button>Criar</button>
           </Link>
         </FieldSet>
@@ -52,7 +52,7 @@ const CreateSnacks = () => {
         <FieldSet>
           <legend> Bebidas </legend>
           <button onClick={() => setIsSelect('drinks')}>Ver</button>
-          <Link href={'/dashboard/create/drink'}>
+          <Link href={'/dashboard/create/drink'} passHref>
             <button>Criar</button>
           </Link>
         </FieldSet>
