@@ -2,9 +2,9 @@
   "name": "first-ts",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next -r tsconfig-paths/register start",
+    "dev": "clear && next dev",
+    "build": "clear && next build",
+    "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
