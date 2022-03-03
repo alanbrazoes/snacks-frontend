@@ -6,7 +6,6 @@ import Link from 'next/link';
 import Snack from '@components/Snacks';
 import { getAllBurguers } from '@services/burguerApi';
 import { getAllDishes } from '@services/dishesApi';
-import { Main } from '@style/indexStyle';
 import { ISnacks } from '@types';
 import styled from 'styled-components';
 
@@ -43,6 +42,20 @@ const Home: NextPage = () => {
     justify-content: space-between;
     align-items: center;
     height: 10vh;
+
+    h1 {
+      font-size: 2em;
+    }
+
+    button {
+      font-size: 1.1em;
+    }
+  `;
+
+  const Main = styled.main`
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
   `;
 
   return (
@@ -59,12 +72,12 @@ const Home: NextPage = () => {
         </nav>
       </Header>
 
-      <Main>
+      <>
         {loading && <h3>Carregando</h3>}
         {error ? (
           <p>Algo deu errado</p>
         ) : (
-          <>
+          <Main>
             {burguers?.map(({ name, preparationTime, _id, ingredients, price }) => (
               <Snack
                 name={name}
@@ -86,9 +99,9 @@ const Home: NextPage = () => {
                 price={price}
               />
             ))}
-          </>
+          </Main>
         )}
-      </Main>
+      </>
     </>
   );
 };
