@@ -8,6 +8,7 @@ import { getAllBurguers } from '@services/burguerApi';
 import { getAllDishes } from '@services/dishesApi';
 import { Main } from '@style/indexStyle';
 import { ISnacks } from '@types';
+import styled from 'styled-components';
 
 const Home: NextPage = () => {
   const [snacks, setSnacks] = useState<ISnacks>({
@@ -37,9 +38,16 @@ const Home: NextPage = () => {
 
   const { burguers, dishes } = snacks;
 
+  const Header = styled.header`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 10vh;
+  `;
+
   return (
     <>
-      <header>
+      <Header>
         <h1>CB|Lanches</h1>
         <nav>
           <Link href={'/login'} passHref>
@@ -49,7 +57,7 @@ const Home: NextPage = () => {
             <button> Carrinho </button>
           </Link>
         </nav>
-      </header>
+      </Header>
 
       <Main>
         {loading && <h3>Carregando</h3>}
