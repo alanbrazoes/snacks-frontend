@@ -2,8 +2,8 @@
   "name": "first-ts",
   "private": true,
   "scripts": {
-    "dev": "clear && next dev",
-    "build": "clear && next build",
+    "dev": "next dev",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
