@@ -13,7 +13,7 @@ const Snack: React.FC<ISnack> = ({ name, preparationTime, _id, price }) => {
         <h2>{name}</h2>
         <p>Tempo de preparo: {preparationTime} minutos.</p>
         <ButtonsContainer>
-          <h3>Preço: {price}</h3>
+          <h3>R$ {price}</h3>
         </ButtonsContainer>
       </Card>
     </Link>

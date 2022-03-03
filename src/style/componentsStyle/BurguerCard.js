@@ -15,6 +15,7 @@ export const Card = styled.section`
 
   h3 {
     display: inline;
+    color: green;
   }
 
   button {
