@@ -36,6 +36,7 @@ const Home: NextPage = () => {
   }, []);
 
   const { burguers, dishes } = snacks;
+
   return (
     <>
       <header>
