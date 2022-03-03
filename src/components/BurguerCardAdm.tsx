@@ -1,12 +1,12 @@
 import React from 'react';
 
-import burguerApi from '@services/burguerApi';
+import { deleteBurguer } from '@services/burguerApi';
 import { Card } from '@style/componentsStyle/BurguerCardStyle';
 
 const BurguerCardAdm: React.FC<any> = ({ name, preparationTime, price, _id, isReload }) => {
-  const deleteBurguer = (id: string) => {
+  const deleteBurguers = (id: string) => {
     const del = async () => {
-      await burguerApi.deleteBurguer(id);
+      await deleteBurguer(id);
       isReload();
     };
 
@@ -21,7 +21,7 @@ const BurguerCardAdm: React.FC<any> = ({ name, preparationTime, price, _id, isRe
       <h3>{price}</h3>
       <section>
         <button>Editar</button>
-        <button onClick={() => deleteBurguer(_id)}>Deletar</button>
+        <button onClick={() => deleteBurguers(_id)}>Deletar</button>
       </section>
     </Card>
   );

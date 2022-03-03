@@ -9,6 +9,7 @@ import { ISnack } from '@types';
 const BurguerDetails: NextPage = () => {
   const { query } = useRouter();
   const [snack, setSnack] = useState<ISnack>();
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     const tes = async () => {
@@ -16,7 +17,7 @@ const BurguerDetails: NextPage = () => {
         const res = await api.get(`/burguer/${query.id}`);
         setSnack(res.data);
       } catch (error) {
-        console.log(error);
+        setError(true);
       }
     };
 
@@ -29,9 +30,15 @@ const BurguerDetails: NextPage = () => {
         <h1>CB | Lanches</h1>
       </header>
 
-      <h1>{snack?.name}</h1>
-      <p>Ingredientes: {snack?.ingredients?.join(', ')}.</p>
-      <button> Adicionar ao carrinho </button>
+      {error ? (
+        <h2>Ops</h2>
+      ) : (
+        <>
+          <h1>{snack?.name}</h1>
+          <p>Ingredientes: {snack?.ingredients?.join(', ')}.</p>
+          <button> Adicionar ao carrinho </button>
+        </>
+      )}
     </>
   );
 };

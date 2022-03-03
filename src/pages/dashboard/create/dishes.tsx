@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { useForm } from '@hooks/useForm';
-import dishesApi from '@services/dishesApi';
+import { createDishe } from '@services/dishesApi';
 import { Ingredient } from '@style/createStyle';
 
 const CreateDishes = () => {
@@ -33,7 +33,7 @@ const CreateDishes = () => {
   const submit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     try {
-      await dishesApi.createDishe({ name, price, preparationTime, ingredientList, type });
+      await createDishe({ name, price, preparationTime, ingredientList, type });
       setSucess(true);
       resetForm({
         name: '',

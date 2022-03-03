@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { useForm } from '@hooks/useForm';
-import burguerApi from '@services/burguerApi';
+import { createBurguer } from '@services/burguerApi';
 import { Ingredient } from '@style/createStyle';
 
 const CreateBurguer = () => {
@@ -34,7 +34,7 @@ const CreateBurguer = () => {
   const submit = async (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      await burguerApi.createBurguer({ name, preparationTime, ingredientList, price, type });
+      await createBurguer({ name, preparationTime, ingredientList, price, type });
       setSucess(true);
       resetForm({
         name: '',
