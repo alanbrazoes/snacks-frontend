@@ -6,6 +6,11 @@ interface ISnack {
   price: number;
 }
 
+interface ISnacks {
+  burguers: ISnack[] | [];
+  dishes: IDishes[] | [];
+}
+
 interface IInput {
   name: string;
   onChange?: undefined;
@@ -73,4 +78,5 @@ export type {
   IForm,
   IDishes,
   ICreateDishes,
+  ISnacks,
 };

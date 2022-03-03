@@ -4,34 +4,38 @@ import type { NextPage } from 'next';
 import Link from 'next/link';
 
 import Snack from '@components/Snacks';
-import burguerApi from '@services/burguerApi';
-import dishesApi from '@services/dishesApi';
+import { getAllBurguers } from '@services/burguerApi';
+import { getAllDishes } from '@services/dishesApi';
 import { Main } from '@style/indexStyle';
-import { IDishes, ISnack } from '@types';
+import { ISnacks } from '@types';
 
 const Home: NextPage = () => {
-  const [snacks, setSnacks] = useState<ISnack[]>();
-  const [dishes, setDishes] = useState<IDishes[]>();
+  const [snacks, setSnacks] = useState<ISnacks>({
+    burguers: [],
+    dishes: [],
+  });
   const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  const fetch = async () => {
+    try {
+      const [getBurguers, getDishes] = await Promise.all([getAllBurguers(), getAllDishes()]);
+
+      if (getBurguers && getDishes) {
+        setSnacks({ burguers: getBurguers, dishes: getDishes.data });
+        setLoading(false);
+      }
+    } catch (error) {
+      setError(true);
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const fetch = async () => {
-      try {
-        const burguer = await burguerApi.getAllBurguers();
-        const dishesRequest = await dishesApi.getAllDishes();
-
-        if (dishesRequest && burguer) {
-          setSnacks(burguer);
-          setDishes(dishesRequest.data);
-        }
-      } catch (error) {
-        setError(true);
-      }
-    };
     fetch();
   }, []);
 
-  console.log(dishes);
+  const { burguers, dishes } = snacks;
 
   return (
     <>
@@ -48,11 +52,12 @@ const Home: NextPage = () => {
       </header>
 
       <Main>
+        {loading && <h3>Carregando</h3>}
         {error ? (
           <p>Algo deu errado</p>
         ) : (
           <>
-            {snacks?.map(({ name, preparationTime, _id, ingredients, price }) => (
+            {burguers?.map(({ name, preparationTime, _id, ingredients, price }) => (
               <Snack
                 name={name}
                 preparationTime={preparationTime}

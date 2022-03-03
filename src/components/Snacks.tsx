@@ -14,7 +14,6 @@ const Snack: React.FC<ISnack> = ({ name, preparationTime, _id, price }) => {
         <p>Tempo de preparo: {preparationTime} minutos.</p>
         <ButtonsContainer>
           <h3>Preço: {price}</h3>
-          <button>Comprar</button>
         </ButtonsContainer>
       </Card>
     </Link>
