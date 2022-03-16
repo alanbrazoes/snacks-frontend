@@ -68,6 +68,12 @@ interface IDishes {
   type: string;
 }
 
+interface IAllSnacks {
+  hamburguers: ISnack[];
+  dishes: IDishes[];
+  drink: IDrink[];
+}
+
 export type {
   ISnack,
   IInput,
@@ -79,4 +85,5 @@ export type {
   IDishes,
   ICreateDishes,
   ISnacks,
+  IAllSnacks,
 };
