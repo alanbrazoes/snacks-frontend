@@ -2,6 +2,14 @@ const path = require('path');
 
 module.exports = {
   entry: './src/pages/_app.tsx',
+  plugins: [
+    'babel-plugin-styled-components',
+    {
+      ssr: true,
+      displayName: true,
+      preprocess: false,
+    },
+  ],
   module: {
     rules: [
       {

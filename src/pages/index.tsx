@@ -46,6 +46,7 @@ const Home: NextPage<IAllSnacks> = ({ hamburguers, dishes, drink }) => {
               price={price}
             />
           ))}
+
           {drink?.map(({ name }, i) => (
             <p key={i}>{name}</p>
           ))}
