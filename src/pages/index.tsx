@@ -3,6 +3,7 @@ import React from 'react';
 import type { GetStaticProps, NextPage } from 'next';
 import Link from 'next/link';
 
+import Drinks from '@components/Drinks';
 import Snack from '@components/Snacks';
 import { getAllSnacks } from '@services/getAllSnacksApi';
 import { Main, Header } from '@style/indexStyle';
@@ -47,8 +48,8 @@ const Home: NextPage<IAllSnacks> = ({ hamburguers, dishes, drink }) => {
             />
           ))}
 
-          {drink?.map(({ name }, i) => (
-            <p key={i}>{name}</p>
+          {drink?.map(({ name, _id, price }) => (
+            <Drinks key={_id} name={name} price={price} _id={''} />
           ))}
         </Main>
       </>

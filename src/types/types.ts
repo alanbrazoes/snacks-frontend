@@ -1,8 +1,8 @@
 interface ISnack {
   _id: string;
   name: string;
-  preparationTime: number;
-  ingredients: string[];
+  preparationTime?: number;
+  ingredients?: string[];
   price: number;
 }
 
@@ -23,6 +23,7 @@ interface ILogin {
   email: string;
   password: string;
 }
+
 interface ICreateDishes {
   _id?: string;
   name: string;
@@ -31,6 +32,7 @@ interface ICreateDishes {
   preparationTime: number;
   type: string;
 }
+
 interface ICreateBurguer {
   type: string;
   name: string;
@@ -48,7 +50,7 @@ interface IPropsSnacksContext {
 interface IDrink {
   name: string;
   price: number;
-  id?: string;
+  _id: string;
 }
 
 interface IForm {
