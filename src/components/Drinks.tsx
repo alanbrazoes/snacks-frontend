@@ -10,7 +10,7 @@ const Drinks: React.FC<IDrink> = ({ name, price, _id }) => {
     <Link href={`/drink/${_id}`} passHref>
       <Card>
         <h2>{name}</h2>
-        <h3>{price}</h3>
+        <h3>R$ {price},00</h3>
       </Card>
     </Link>
   );

@@ -26,26 +26,12 @@ const Home: NextPage<IAllSnacks> = ({ hamburguers, dishes, drink }) => {
 
       <>
         <Main>
-          {hamburguers?.map(({ name, preparationTime, _id, ingredients, price }) => (
-            <Snack
-              name={name}
-              preparationTime={preparationTime}
-              _id={_id}
-              ingredients={ingredients}
-              key={_id}
-              price={price}
-            />
+          {hamburguers?.map(({ name, _id, ingredients, price }) => (
+            <Snack name={name} _id={_id} ingredients={ingredients} key={_id} price={price} />
           ))}
 
-          {dishes?.map(({ name, preparationTime, _id, ingredientList, price }) => (
-            <Snack
-              key={name}
-              name={name}
-              preparationTime={preparationTime}
-              _id={_id}
-              ingredients={ingredientList}
-              price={price}
-            />
+          {dishes?.map(({ name, _id, ingredientList, price }) => (
+            <Snack key={name} name={name} _id={_id} ingredients={ingredientList} price={price} />
           ))}
 
           {drink?.map(({ name, _id, price }) => (
