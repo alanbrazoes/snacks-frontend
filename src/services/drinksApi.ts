@@ -29,9 +29,9 @@ export default {
     }
   },
 
-  async updateDrink({ name, price, id }: IDrink) {
+  async updateDrink({ name, price, _id }: IDrink) {
     try {
-      await api.put(`/drink/update/${id}`, { name, price });
+      await api.put(`/drink/update/${_id}`, { name, price });
       return true;
     } catch (error) {
       return false;

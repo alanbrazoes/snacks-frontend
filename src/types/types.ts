@@ -50,7 +50,7 @@ interface IPropsSnacksContext {
 interface IDrink {
   name: string;
   price: number;
-  _id: string;
+  _id?: string;
 }
 
 interface IForm {
