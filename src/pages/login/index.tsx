@@ -12,7 +12,7 @@ const Login: NextPage = () => {
 
   const submit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    router.push('/');
+    router.push('/dashboard');
   };
 
   return (
