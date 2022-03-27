@@ -4,9 +4,15 @@ import { ILogin } from '@types';
 const loginRequest = async ({ email, password }: ILogin) => {
   try {
     const request = await api.get(`/login/${email}/${password}`);
-    console.log(request.data);
+    const {
+      data: { token },
+    } = request;
+    if (token) {
+      localStorage.setItem('token', token);
+      return true;
+    }
   } catch (error) {
-    console.log(error);
+    return false;
   }
 };
 

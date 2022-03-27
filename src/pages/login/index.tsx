@@ -14,7 +14,9 @@ const Login: NextPage = () => {
   const submit = async (e: { preventDefault: () => void }) => {
     const { email, password } = form;
     e.preventDefault();
-    loginRequest({ email, password });
+    const login = await loginRequest({ email, password });
+    console.log(login);
+    if (login) router.push('/dashboard');
   };
 
   return (
