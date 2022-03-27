@@ -1,6 +1,6 @@
 import React from 'react';
 
-import type { GetStaticProps, NextPage } from 'next';
+import type { GetServerSideProps, GetStaticProps, NextPage } from 'next';
 import Link from 'next/link';
 
 import Snack from '@components/Snacks';
@@ -42,7 +42,7 @@ const Home: NextPage<IAllSnacks> = ({ hamburguers, dishes, drink }) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const { hamburguers, dishes, drink } = await getAllSnacks();
 
   return {
