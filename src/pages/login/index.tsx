@@ -2,6 +2,7 @@ import { NextPage } from 'next';
 import { useRouter } from 'next/router';
 
 import { useForm } from '@hooks/useForm';
+import loginRequest from '@services/loginApi';
 
 const Login: NextPage = () => {
   const [form, onChange] = useForm({
@@ -11,8 +12,9 @@ const Login: NextPage = () => {
   const router = useRouter();
 
   const submit = async (e: { preventDefault: () => void }) => {
+    const { email, password } = form;
     e.preventDefault();
-    router.push('/dashboard');
+    loginRequest({ email, password });
   };
 
   return (

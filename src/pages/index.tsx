@@ -1,6 +1,6 @@
 import React from 'react';
 
-import type { GetServerSideProps, GetStaticProps, NextPage } from 'next';
+import type { GetServerSideProps, NextPage } from 'next';
 import Link from 'next/link';
 
 import Snack from '@components/Snacks';

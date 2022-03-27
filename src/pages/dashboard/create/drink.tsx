@@ -6,6 +6,7 @@ const CreateDrinks = () => {
     name: '',
     price: 0,
   });
+
   const { name, price } = form;
 
   const submit = (e: { preventDefault: () => void }) => {
@@ -17,9 +18,9 @@ const CreateDrinks = () => {
     <>
       <form onSubmit={submit}>
         <fieldset>
-          <legend>Adicionar bebidas</legend>
+          <legend>Adicionar bebida</legend>
           <label>Nome</label>
-          <input name={'drink'} onChange={onChange} value={name} />
+          <input name={'name'} onChange={onChange} value={name} />
 
           <label>Preço</label>
           <input name={'price'} onChange={onChange} value={price} type="number" />

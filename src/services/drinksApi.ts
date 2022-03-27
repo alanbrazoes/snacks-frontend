@@ -21,8 +21,13 @@ export default {
   },
 
   async createDrink({ name, price }: IDrink) {
+    const body = {
+      name,
+      price,
+    };
+
     try {
-      await api.post('/create/drink', { name, price });
+      await api.post('/create/drink', body);
       return true;
     } catch (error) {
       return false;
