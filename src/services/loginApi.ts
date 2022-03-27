@@ -3,7 +3,12 @@ import { ILogin } from '@types';
 
 const loginRequest = async ({ email, password }: ILogin) => {
   try {
-    const request = await api.get(`/login/${email}/${password}`);
+    const request = await api.get(`/login`, {
+      data: {
+        password,
+        email,
+      },
+    });
     const {
       data: { token },
     } = request;
