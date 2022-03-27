@@ -3,11 +3,9 @@ import { ILogin } from '@types';
 
 const loginRequest = async ({ email, password }: ILogin) => {
   try {
-    const request = await api.get(`/login`, {
-      data: {
-        password,
-        email,
-      },
+    const request = await api.post(`/login`, {
+      password,
+      email,
     });
     const {
       data: { token },
