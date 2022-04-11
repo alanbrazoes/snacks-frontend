@@ -18,6 +18,7 @@ export const getBurguer = async (id: string) => {
     return false;
   }
 };
+
 export const createBurguer = async ({
   name,
   preparationTime,
@@ -25,13 +26,19 @@ export const createBurguer = async ({
   price,
   type,
 }: ICreateBurguer) => {
+  const body = { name, preparationTime, ingredientList, price, type };
   try {
-    await api.post('/create/burguer', { name, preparationTime, ingredientList, price, type });
+    await api.post('/create/burguer', body, {
+      headers: {
+        auth: localStorage.getItem('token') as string,
+      },
+    });
     return true;
   } catch (error) {
     return false;
   }
 };
+
 export const updateBurguer = async ({
   name,
   preparationTime,
@@ -45,6 +52,7 @@ export const updateBurguer = async ({
     return false;
   }
 };
+
 export const deleteBurguer = async (id: string) => {
   try {
     await api.delete(`/burguer/delete/${id}`);
