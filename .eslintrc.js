@@ -20,19 +20,18 @@ module.exports = {
     ecmaVersion: 11,
     sourceType: 'module',
   },
-  plugins: ['@typescript-eslint', 'import-helpers', 'styled-components-config'],
+  plugins: ['@typescript-eslint', 'import-helpers'],
   rules: {
     '@typescript-eslint/no-var-requires': 0,
     'import-helpers/order-imports': [
       'warn',
       {
-        newlinesBetween: 'always', // new line between groups
+        newlinesBetween: 'always',
         groups: ['/^react/', '/^next/', 'module', ['parent', 'sibling', 'index']],
         alphabetize: { order: 'asc', ignoreCase: true },
       },
     ],
     'no-console': [1, { allow: ['warn', 'error'] }],
     '@typescript-eslint/no-explicit-any': 'off',
-    'styled-components-config/rule-name': 0,
   },
 };
