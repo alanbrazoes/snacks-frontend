@@ -1,17 +1,22 @@
 import React from 'react';
 
-import Link from 'next/link';
+import Image from 'next/image';
 
-import { Card } from '@style/componentsStyle/BurguerCard';
 import { ISnack, IDrink, IDishes } from '@types';
 
 const Snack: React.FC<ISnack | IDishes | IDrink> = ({ name, _id, price }): JSX.Element => (
-  <Link href={`/burguer/${_id}`} passHref>
-    <Card>
-      <h2>{name}</h2>
+  <div className="border-2 border-background flex justify-between rounded">
+    <div className="p-2">
+      <h2 className="text-primary font-semibold text-xl">{name}</h2>
       <h3>R$ {price},00</h3>
-    </Card>
-  </Link>
+    </div>
+    <Image
+      src="/img/burguer.jpg"
+      width="100"
+      height="100"
+      className="rounded-tr-sm rounded-br-sm"
+    />
+  </div>
 );
 
 export default Snack;

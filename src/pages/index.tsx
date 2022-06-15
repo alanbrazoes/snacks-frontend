@@ -5,38 +5,36 @@ import Link from 'next/link';
 
 import Snack from '@components/Snacks';
 import { getAllSnacks } from '@services/getAllSnacksApi';
-import { Main, Header } from '@style/indexStyle';
 import { IAllSnacks } from '@types';
 
 const Home: NextPage<IAllSnacks> = ({ hamburguers, dishes, drink }) => {
   return (
     <>
-      <Header>
-        <h1>CB|Lanches</h1>
+      <header className="p-4 border-b-4 border-background flex justify-between items-center">
+        <h1 className="text-3xl font-semibold">CB | Lanches</h1>
         <nav>
-          <Link href={'/login'} passHref>
-            <button>Login</button>
-          </Link>
-          <Link href={'/cart'} passHref>
-            <button> Carrinho </button>
-          </Link>
+          <a href="/cart" className="text-2xl opacity-90 p-2 hover:bg-background rounded">
+            Carrinho
+          </a>
         </nav>
-      </Header>
+      </header>
 
       <>
-        <Main>
-          {hamburguers?.map(({ name, _id, ingredients, price }) => (
-            <Snack name={name} _id={_id} ingredients={ingredients} key={_id} price={price} />
-          ))}
+        <main>
+          <section className="p-4 grid grid-col-1 gap-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+            {hamburguers?.map(({ name, _id, ingredients, price }) => (
+              <Snack name={name} _id={_id} ingredients={ingredients} key={_id} price={price} />
+            ))}
 
-          {dishes?.map(({ name, _id, ingredientList, price }) => (
-            <Snack key={name} name={name} _id={_id} ingredients={ingredientList} price={price} />
-          ))}
+            {dishes?.map(({ name, _id, ingredientList, price }) => (
+              <Snack key={name} name={name} _id={_id} ingredients={ingredientList} price={price} />
+            ))}
 
-          {drink?.map(({ name, _id, price }) => (
-            <Snack key={_id} name={name} price={price} _id={''} />
-          ))}
-        </Main>
+            {drink?.map(({ name, _id, price }) => (
+              <Snack key={_id} name={name} price={price} _id={''} />
+            ))}
+          </section>
+        </main>
       </>
     </>
   );

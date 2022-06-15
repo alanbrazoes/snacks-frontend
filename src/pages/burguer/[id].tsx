@@ -7,21 +7,23 @@ import api from '@services/index';
 import { ISnack } from '@types';
 
 const BurguerDetails: NextPage = () => {
-  const { query } = useRouter();
+  const {
+    query: { id },
+  } = useRouter();
   const [snack, setSnack] = useState<ISnack>();
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    const tes = async () => {
+    const getDetails = async () => {
       try {
-        const res = await api.get(`/burguer/${query.id}`);
-        setSnack(res.data);
+        const { data } = await api.get(`/burguer/${id}`);
+        setSnack(data);
       } catch (error) {
         setError(true);
       }
     };
 
-    tes();
+    getDetails();
   }, []);
 
   return (
