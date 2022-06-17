@@ -9,7 +9,6 @@ import { getAllSnacks } from '@services/getAllSnacksApi';
 import { IAllSnacks } from '@types';
 
 const Home: NextPage<IAllSnacks> = ({ hamburguers, dishes, drink }) => {
-  console.log(hamburguers);
   return (
     <>
       <Header>
@@ -21,14 +20,14 @@ const Home: NextPage<IAllSnacks> = ({ hamburguers, dishes, drink }) => {
       <>
         <main>
           <section className="flex flex-col">
-            {/* <div className="flex justify-center flex-col">
+            <div className="flex justify-center flex-col">
               <h2 className="filter_buttons">Hamburguers</h2>
               <div className="products_section">
                 {hamburguers.map(({ name, _id, price }) => (
                   <Snack name={name} _id={_id} key={_id} price={price} />
                 ))}
               </div>
-            </div> */}
+            </div>
 
             <div className="flex justify-center flex-col">
               <h2 className="filter_buttons">Pratos</h2>
