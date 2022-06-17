@@ -1,13 +1,13 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { context } from '@context/cart';
+import { useCart } from '@context/cart';
 import { ISnack, IDrink, IDishes } from '@types';
 
 const Snack: React.FC<ISnack | IDishes | IDrink> = ({ name, _id, price }): JSX.Element => {
-  const { cart, setCart } = useContext(context);
+  const { cart, setCart } = useCart();
 
   const addProductCart = () => {
     setCart([...cart, { name, _id, price, quantity: 1 }]);

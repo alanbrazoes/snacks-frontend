@@ -3,33 +3,32 @@ import React from 'react';
 import type { GetServerSideProps, NextPage } from 'next';
 import Link from 'next/link';
 
+import Header from '@components/Header';
 import Snack from '@components/Snacks';
 import { getAllSnacks } from '@services/getAllSnacksApi';
 import { IAllSnacks } from '@types';
 
 const Home: NextPage<IAllSnacks> = ({ hamburguers, dishes, drink }) => {
+  console.log(hamburguers);
   return (
     <>
-      <header className="p-4 border-b-4 border-background flex justify-between items-center">
-        <h1 className="text-3xl font-semibold">CB | Lanches</h1>
-        <nav>
-          <Link href="/cart">
-            <p className="text-2xl opacity-90 p-2 hover:bg-background rounded">Carrinho</p>
-          </Link>
-        </nav>
-      </header>
+      <Header>
+        <Link href="/cart">
+          <p className="text-2xl opacity-90 p-2 hover:bg-background rounded">Carrinho</p>
+        </Link>
+      </Header>
 
       <>
         <main>
           <section className="flex flex-col">
-            <div className="flex justify-center flex-col">
+            {/* <div className="flex justify-center flex-col">
               <h2 className="filter_buttons">Hamburguers</h2>
               <div className="products_section">
                 {hamburguers.map(({ name, _id, price }) => (
                   <Snack name={name} _id={_id} key={_id} price={price} />
                 ))}
               </div>
-            </div>
+            </div> */}
 
             <div className="flex justify-center flex-col">
               <h2 className="filter_buttons">Pratos</h2>
