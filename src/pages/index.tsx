@@ -28,7 +28,6 @@ const Home: NextPage<IAllSnacks> = ({ hamburguers, dishes, drink }) => {
                 ))}
               </div>
             </div>
-
             <div className="flex justify-center flex-col">
               <h2 className="filter_buttons">Pratos</h2>
               <div className="products_section">
