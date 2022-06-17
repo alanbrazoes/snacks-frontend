@@ -6,42 +6,6 @@ interface ISnack {
   price: number;
 }
 
-interface ISnacks {
-  burguers: ISnack[] | [];
-  dishes: IDishes[] | [];
-}
-
-interface IInput {
-  name: string;
-  onChange?: undefined;
-  value: string;
-  label: string;
-  type?: string;
-}
-
-interface ILogin {
-  email: string;
-  password: string;
-}
-
-interface ICreateDishes {
-  _id?: string;
-  name: string;
-  price: number;
-  ingredientList: string[];
-  preparationTime: number;
-  type: string;
-}
-
-interface ICreateBurguer {
-  type: string;
-  name: string;
-  preparationTime: number;
-  ingredientList: string[];
-  price?: number;
-  id?: string;
-}
-
 interface IPropsSnacksContext {
   snacks: ISnack[];
   setSnacks: React.Dispatch<React.SetStateAction<ISnack[]>>;
@@ -50,15 +14,7 @@ interface IPropsSnacksContext {
 interface IDrink {
   name: string;
   price: number;
-  _id?: string;
-}
-
-interface IForm {
-  name: string;
-  preparationTime: number;
-  ingredients: { ingredient: string; ingredienList: Array<unknown> };
-  price: number;
-  type: string;
+  _id: string;
 }
 
 interface IDishes {
@@ -76,16 +32,4 @@ interface IAllSnacks {
   drink: IDrink[];
 }
 
-export type {
-  ISnack,
-  IInput,
-  ILogin,
-  ICreateBurguer,
-  IPropsSnacksContext,
-  IDrink,
-  IForm,
-  IDishes,
-  ICreateDishes,
-  ISnacks,
-  IAllSnacks,
-};
+export type { ISnack, IPropsSnacksContext, IDrink, IDishes, IAllSnacks };

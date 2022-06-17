@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import type { GetServerSideProps, NextPage } from 'next';
+import Link from 'next/link';
 
 import Snack from '@components/Snacks';
 import { getAllSnacks } from '@services/getAllSnacksApi';
@@ -12,9 +13,9 @@ const Home: NextPage<IAllSnacks> = ({ hamburguers, dishes, drink }) => {
       <header className="p-4 border-b-4 border-background flex justify-between items-center">
         <h1 className="text-3xl font-semibold">CB | Lanches</h1>
         <nav>
-          <a href="/cart" className="text-2xl opacity-90 p-2 hover:bg-background rounded">
-            Carrinho
-          </a>
+          <Link href="/cart">
+            <p className="text-2xl opacity-90 p-2 hover:bg-background rounded">Carrinho</p>
+          </Link>
         </nav>
       </header>
 
