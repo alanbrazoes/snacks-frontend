@@ -14,7 +14,9 @@ const Cart: NextPage = () => {
           <p className="text-2xl opacity-90 p-2 hover:bg-background rounded">Home</p>
         </Link>
       </Header>
-      <ProductCart />
+      <main className="flex items-center flex-col h-full">
+        <ProductCart />
+      </main>
     </>
   );
 };
