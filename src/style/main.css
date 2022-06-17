@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .filter_buttons {
+    @apply m-2 text-xl text-center hover:underline w-full
+  }
+
+  .products_section {
+    @apply p-4 grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5
+  }
+}

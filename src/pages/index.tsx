@@ -3,36 +3,50 @@ import React from 'react';
 import type { GetServerSideProps, NextPage } from 'next';
 import Link from 'next/link';
 
+import Header from '@components/Header';
 import Snack from '@components/Snacks';
 import { getAllSnacks } from '@services/getAllSnacksApi';
 import { IAllSnacks } from '@types';
 
 const Home: NextPage<IAllSnacks> = ({ hamburguers, dishes, drink }) => {
+  console.log(hamburguers);
   return (
     <>
-      <header className="p-4 border-b-4 border-background flex justify-between items-center">
-        <h1 className="text-3xl font-semibold">CB | Lanches</h1>
-        <nav>
-          <a href="/cart" className="text-2xl opacity-90 p-2 hover:bg-background rounded">
-            Carrinho
-          </a>
-        </nav>
-      </header>
+      <Header>
+        <Link href="/cart">
+          <p className="text-2xl opacity-90 p-2 hover:bg-background rounded">Carrinho</p>
+        </Link>
+      </Header>
 
       <>
         <main>
-          <section className="p-4 grid grid-col-1 gap-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-            {hamburguers?.map(({ name, _id, ingredients, price }) => (
-              <Snack name={name} _id={_id} ingredients={ingredients} key={_id} price={price} />
-            ))}
+          <section className="flex flex-col">
+            {/* <div className="flex justify-center flex-col">
+              <h2 className="filter_buttons">Hamburguers</h2>
+              <div className="products_section">
+                {hamburguers.map(({ name, _id, price }) => (
+                  <Snack name={name} _id={_id} key={_id} price={price} />
+                ))}
+              </div>
+            </div> */}
 
-            {dishes?.map(({ name, _id, ingredientList, price }) => (
-              <Snack key={name} name={name} _id={_id} ingredients={ingredientList} price={price} />
-            ))}
+            <div className="flex justify-center flex-col">
+              <h2 className="filter_buttons">Pratos</h2>
+              <div className="products_section">
+                {dishes.map(({ name, _id, price }) => (
+                  <Snack name={name} _id={_id} key={_id} price={price} />
+                ))}
+              </div>
+            </div>
 
-            {drink?.map(({ name, _id, price }) => (
-              <Snack key={_id} name={name} price={price} _id={''} />
-            ))}
+            <div className="flex justify-center flex-col">
+              <h2 className="filter_buttons">Bebidas</h2>
+              <div className="products_section">
+                {drink.map(({ name, _id, price }) => (
+                  <Snack name={name} _id={_id} key={_id} price={price} />
+                ))}
+              </div>
+            </div>
           </section>
         </main>
       </>
