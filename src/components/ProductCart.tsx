@@ -38,6 +38,10 @@ const ProductCart: React.FC = () => {
     );
   };
 
+  const removeProduct = (id: string) => {
+    setCart(cart.filter(({ _id }) => id !== _id));
+  };
+
   return (
     <section className="w-2/4 border-x flex flex-col items-center h-full">
       {cart.map(({ name, quantity, _id }) => (
@@ -51,6 +55,7 @@ const ProductCart: React.FC = () => {
             <button className="inline border rounded-full w-6" onClick={() => addQuantity(_id)}>
               +
             </button>
+            <button onClick={() => removeProduct(_id)}>Remover</button>
           </div>
           <Image src="/img/burguer.jpg" width="100" height="100" />
         </div>
