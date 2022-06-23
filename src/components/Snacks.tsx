@@ -14,7 +14,10 @@ const Snack: React.FC<ISnack | IDishes | IDrink> = ({ name, _id, price }): JSX.E
   };
 
   return (
-    <div className="border-2 border-background flex justify-between rounded">
+    <div
+      className="border-2 border-background flex justify-between rounded"
+      data-testid="snackContainer"
+    >
       <div className="p-2">
         <h2 className="text-primary font-semibold text-xl">{name}</h2>
         <Link href={`/burguer/${_id}`}>{`R$ ${price},00`}</Link>
