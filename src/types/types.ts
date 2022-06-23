@@ -21,9 +21,9 @@ interface IDishes {
   _id: string;
   name: string;
   price: number;
-  ingredientList: string[];
-  preparationTime: number;
-  type: string;
+  ingredientList?: string[];
+  preparationTime?: number;
+  type?: string;
 }
 
 interface IAllSnacks {

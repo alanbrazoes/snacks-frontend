@@ -13,7 +13,9 @@ const Home: NextPage<IAllSnacks> = ({ hamburguers, dishes, drink }) => {
     <>
       <Header>
         <Link href="/cart">
-          <p className="text-2xl opacity-90 p-2 hover:bg-background rounded">Carrinho</p>
+          <p className="text-2xl opacity-90 p-2 hover:bg-background rounded" data-testid="cartLink">
+            Carrinho
+          </p>
         </Link>
       </Header>
 

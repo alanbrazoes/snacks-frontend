@@ -44,7 +44,9 @@ const ProductCart: React.FC = () => {
       {cart.map(({ name, quantity, _id }) => (
         <div key={name} className="flex border-2 w-fit m-2">
           <div className="p-2">
-            <h4 className="text-primary text-xl font-semibold">{name}</h4>
+            <h4 className="text-primary text-xl font-semibold" data-testid="name">
+              {name}
+            </h4>
             <button className="inline border rounded-full w-6" onClick={() => subQuantity(_id)}>
               -
             </button>

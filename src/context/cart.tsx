@@ -18,7 +18,7 @@ const CartContext: React.FC = ({ children }) => {
   const [cart, setCart] = useState<Cart[]>([]);
 
   useEffect(() => {
-    const getCart: Cart[] | null = JSON.parse(localStorage.getItem('CBcart') as string);
+    const getCart: Cart[] | null = JSON.parse(window.localStorage.getItem('CBcart') as string);
     if (getCart) {
       setCart(getCart);
     } else {
