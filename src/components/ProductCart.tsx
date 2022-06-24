@@ -40,21 +40,34 @@ const ProductCart: React.FC = () => {
   const removeProduct = (id: string) => setCart(cart.filter(({ _id }) => id !== _id));
 
   return (
-    <section className="w-full border-x border-x-text flex flex-col items-center h-full sm:w-3/4 md:w-2/4">
+    <section
+      className="w-full border-x border-x-text flex flex-col items-center h-full sm:w-3/4 md:w-2/4"
+      data-testid="products"
+    >
       {cart.map(({ name, quantity, _id }) => (
         <div key={name} className="flex border-2 w-fit m-2">
           <div className="p-2">
             <h4 className="text-primary text-xl font-semibold" data-testid="name">
               {name}
             </h4>
-            <button className="inline border rounded-full w-6" onClick={() => subQuantity(_id)}>
+            <button
+              className="inline border rounded-full w-6"
+              onClick={() => subQuantity(_id)}
+              data-testid="subQuantity"
+            >
               -
             </button>
-            <p className="inline"> Quantidade: {quantity} </p>
-            <button className="inline border rounded-full w-6" onClick={() => addQuantity(_id)}>
+            <p className="inline" data-testid="quantity">
+              Quantidade: {quantity}
+            </p>
+            <button
+              className="inline border rounded-full w-6"
+              onClick={() => addQuantity(_id)}
+              data-testid="addQuantity"
+            >
               +
             </button>
-            <button className="block" onClick={() => removeProduct(_id)}>
+            <button className="block" onClick={() => removeProduct(_id)} data-testid="removeBtn">
               Remover
             </button>
           </div>
@@ -63,8 +76,12 @@ const ProductCart: React.FC = () => {
       ))}
 
       <div className="fixed bottom-0 w-full flex justify-evenly items-center py-6 sm:w-3/4 md:w-2/4 h-8 bg-primary">
-        <p className="text-background font-semibold text-3xl">Total: R$ {total}</p>
-        <button className="text-background font-semibold text-3xl">Finalizar pedido</button>
+        <p className="text-background font-semibold text-3xl" data-testid="total">
+          Total: R$ {total}
+        </p>
+        <button className="text-background font-semibold text-3xl" data-testid="finish">
+          Finalizar pedido
+        </button>
       </div>
     </section>
   );

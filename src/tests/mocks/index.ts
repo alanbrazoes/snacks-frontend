@@ -11,6 +11,12 @@ const CART_MOCK = [
     _id: 'dsdadsd',
     quantity: 1,
   },
+  {
+    name: 'La Bestia',
+    price: 15,
+    _id: 'fvgbfgb',
+    quantity: 1,
+  },
 ];
 
 const ALL_SNACKS = {

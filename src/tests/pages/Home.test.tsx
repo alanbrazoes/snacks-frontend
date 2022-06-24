@@ -6,7 +6,7 @@ import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { ALL_SNACKS } from '../mocks';
 
-describe('Header page.', () => {
+describe('Home page.', () => {
   it('Should have button redirect to cart.', () => {
     const { getByTestId } = render(<Home {...ALL_SNACKS} />);
     const linkBtn = getByTestId('cartLink');
