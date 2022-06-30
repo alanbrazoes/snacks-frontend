@@ -32,5 +32,4 @@ interface IAllSnacks {
   drink: IDrink[];
 }
 
-export type { 
-  ISnack, IPropsSnacksContext, IDrink, IDishes, IAllSnacks };
+export type { ISnack, IPropsSnacksContext, IDrink, IDishes, IAllSnacks };
