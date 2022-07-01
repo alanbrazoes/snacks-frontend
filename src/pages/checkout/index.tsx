@@ -2,10 +2,15 @@ import React from 'react';
 
 import { NextPage } from 'next';
 
+import { Address } from '@components/Address';
+
 const Checkout: NextPage = () => {
   return (
     <>
-      <h1>Checkout</h1>
+      <header>CB | Lanches</header>
+      <main>
+        <Address />
+      </main>
     </>
   );
 };
