@@ -21,4 +21,4 @@ const Checkout: NextPage = () => {
   );
 };
 
-export { Checkout };
+export default Checkout;
