@@ -80,7 +80,7 @@ const ProductCart: React.FC = () => {
           Total: R$ {total}
         </p>
         <button className="text-background font-semibold text-3xl" data-testid="finish">
-          Finalizar pedido
+          <a href="/checkout">Finalizar pedido</a>
         </button>
       </div>
     </section>
