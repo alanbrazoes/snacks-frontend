@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Checkout } from '@pages/checkout';
+import Checkout from '@pages/checkout';
 import { render } from '@testing-library/react';
 
 import '@testing-library/jest-dom';
