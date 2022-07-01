@@ -12,6 +12,7 @@ const Checkout: NextPage = () => {
       <main>
         <Address />
         <PaymentMethod />
+        <button data-testid="checkoutDone">Finalizar pedido</button>
       </main>
     </>
   );
