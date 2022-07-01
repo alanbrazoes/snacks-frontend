@@ -6,11 +6,7 @@ const PaymentMethod: React.FC = () => {
       <h1>Método de pagamento</h1>
       <form>
         <label>
-          Cartão de crédito
-          <input type="radio"></input>
-        </label>
-        <label>
-          Cartão de débito
+          Cartão
           <input type="radio"></input>
         </label>
         <label>

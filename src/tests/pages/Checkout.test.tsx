@@ -18,17 +18,17 @@ describe('Checkout page.', () => {
   });
 
   it('Address forms.', () => {
-    const { getByTestId } = render(<Checkout />);
+    const { getByLabelText, getByRole } = render(<Checkout />);
 
-    const getByLocation = getByTestId('getByLocation');
+    const getByLocation = getByRole('button', { name: 'Obter localização atual' });
 
-    const road = getByTestId('road');
-    const number = getByTestId('number');
-    const district = getByTestId('district');
-    const complement = getByTestId('complement');
-    const city = getByTestId('city');
-    const state = getByTestId('state');
-    const confirmAddress = getByTestId('confirmAddress');
+    const road = getByLabelText('Rua');
+    const number = getByLabelText('Número');
+    const district = getByLabelText('Bairro');
+    const complement = getByLabelText('Complemento');
+    const city = getByLabelText('Cidade');
+    const state = getByLabelText('Estado');
+    const confirmAddress = getByRole('button', { name: 'Confirmar endereço' });
 
     expect(getByLocation).toBeInTheDocument();
     expect(road).toBeInTheDocument();
@@ -41,14 +41,12 @@ describe('Checkout page.', () => {
   });
 
   it('Payment methods', () => {
-    const { getByTestId } = render(<Checkout />);
+    const { getByLabelText } = render(<Checkout />);
 
-    const debitCard = getByTestId('debitCard');
-    const creditCard = getByTestId('creditCard');
-    const cash = getByTestId('cash');
+    const card = getByLabelText('Cartão');
+    const cash = getByLabelText('Dinheiro');
 
-    expect(debitCard).toBeInTheDocument();
-    expect(creditCard).toBeInTheDocument();
+    expect(card).toBeInTheDocument();
     expect(cash).toBeInTheDocument();
   });
 

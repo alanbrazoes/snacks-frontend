@@ -4,7 +4,7 @@ const Address: React.FC = () => {
   return (
     <section>
       <h1>Endereço</h1>
-      <button>Localização atual</button>
+      <button>Obter localização atual</button>
       <form>
         <label>
           Rua
@@ -31,7 +31,7 @@ const Address: React.FC = () => {
           <input></input>
         </label>
 
-        <button type="submit">Confiemar endereço</button>
+        <button type="submit">Confirmar endereço</button>
       </form>
     </section>
   );
