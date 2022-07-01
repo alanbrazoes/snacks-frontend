@@ -7,9 +7,9 @@ import '@testing-library/jest-dom';
 
 describe('Checkout page.', () => {
   it('Should have headers.', () => {
-    const { getByTestId } = render(<Checkout />);
-    const addressHeading = getByTestId('addressHeading');
-    const paymentMethod = getByTestId('paymentMethod');
+    const { getByTestId, getByRole } = render(<Checkout />);
+    const addressHeading = getByRole('heading', { level: 1, name: 'Endereço' });
+    const paymentMethod = getByRole('heading', { level: 1, name: 'Método de pagamento' });
     const checkoutDone = getByTestId('checkoutDone');
 
     expect(addressHeading).toBeInTheDocument();
