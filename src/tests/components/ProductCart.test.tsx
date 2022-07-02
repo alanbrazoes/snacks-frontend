@@ -1,5 +1,5 @@
-import ProductCart from '@components/ProductCart';
-import CartContext from '@context/cart';
+import { ProductCart } from '@components/ProductCart';
+import { CartContext } from '@context/cart';
 import '@testing-library/jest-dom';
 import { fireEvent, render } from '@testing-library/react';
 

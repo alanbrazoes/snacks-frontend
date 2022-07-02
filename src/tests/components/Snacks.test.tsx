@@ -2,14 +2,14 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import Snacks from '../../components/Snacks';
+import { Snack } from '../../components/Snacks';
 import { DISH, DRINK, SNACKS } from '../mocks';
 
 import '@testing-library/jest-dom';
 
 describe('Snacks component.', () => {
   it('Burguer.', () => {
-    const { getByTestId, getByText } = render(<Snacks {...SNACKS} />);
+    const { getByTestId, getByText } = render(<Snack {...SNACKS} />);
 
     const container = getByTestId('snackContainer');
     const burguer = getByText('Cabuloso');
@@ -19,7 +19,7 @@ describe('Snacks component.', () => {
   });
 
   it('Drink.', () => {
-    const { getByTestId, getByText } = render(<Snacks {...DRINK} />);
+    const { getByTestId, getByText } = render(<Snack {...DRINK} />);
 
     const container = getByTestId('snackContainer');
     const burguer = getByText('Coca-cola');
@@ -29,7 +29,7 @@ describe('Snacks component.', () => {
   });
 
   it('Dish.', () => {
-    const { getByTestId, getByText } = render(<Snacks {...DISH} />);
+    const { getByTestId, getByText } = render(<Snack {...DISH} />);
 
     const container = getByTestId('snackContainer');
     const burguer = getByText('Macarronada');
