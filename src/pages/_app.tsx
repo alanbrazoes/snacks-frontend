@@ -1,8 +1,8 @@
 import type { AppProps } from 'next/app';
 
-import CartContext from '@context/cart';
+import { CartContext } from '@context/cart';
 
-import '../style/main.css';
+import '@style/main.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

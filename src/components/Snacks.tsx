@@ -37,4 +37,4 @@ const Snack: React.FC<ISnack | IDishes | IDrink> = ({ name, _id, price }): JSX.E
   );
 };
 
-export default Snack;
+export { Snack };

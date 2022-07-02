@@ -3,8 +3,8 @@ import React from 'react';
 import type { NextPage } from 'next';
 import Link from 'next/link';
 
-import Header from '@components/Header';
-import ProductCart from '@components/ProductCart';
+import { Header } from '@components/Header';
+import { ProductCart } from '@components/ProductCart';
 
 const Cart: NextPage = () => {
   return (

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import CartContext from '@context/cart';
+import { CartContext } from '@context/cart';
 import Cart from '@pages/cart';
 import { render } from '@testing-library/react';
 

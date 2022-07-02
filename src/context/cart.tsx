@@ -37,4 +37,4 @@ const CartContext: React.FC = ({ children }) => {
 
 export const useCart = () => useContext(context);
 
-export default CartContext;
+export { CartContext };
