@@ -3,12 +3,13 @@ import React from 'react';
 import { NextPage } from 'next';
 
 import { Address } from '@components/Address';
+import { Header } from '@components/Header';
 import { PaymentMethod } from '@components/PaymentMethod';
 
 const Checkout: NextPage = () => {
   return (
     <>
-      <header>CB | Lanches</header>
+      <Header />
       <main>
         <Address />
         <PaymentMethod />

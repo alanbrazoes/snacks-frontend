@@ -87,4 +87,4 @@ const ProductCart: React.FC = () => {
   );
 };
 
-export default ProductCart;
+export { ProductCart };

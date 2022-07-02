@@ -3,8 +3,8 @@ import React from 'react';
 import type { GetServerSideProps, NextPage } from 'next';
 import Link from 'next/link';
 
-import Header from '@components/Header';
-import Snack from '@components/Snacks';
+import { Header } from '@components/Header';
+import { Snack } from '@components/Snacks';
 import { getAllSnacks } from '@services/getAllSnacksApi';
 import { IAllSnacks } from '@types';
 

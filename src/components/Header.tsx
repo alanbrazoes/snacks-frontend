@@ -9,4 +9,4 @@ const Header: React.FC = ({ children }) => {
   );
 };
 
-export default Header;
+export { Header };
