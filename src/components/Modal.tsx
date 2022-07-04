@@ -19,7 +19,7 @@ const Modal: React.FC<IModal> = ({ show, onClose, name }) => {
   }, []);
 
   const content = show ? (
-    <div className="w-full h-full border-2 bg-text bg-opacity-75 flex justify-center items-center fixed top-0 left-0">
+    <div className="w-full h-full border-2 bg-text bg-opacity-75 flex justify-center items-center absolute top-0 left-0">
       <div className="w-2/4 h-2/4 bg-background absolute">
         <button onClick={handleClick}>X</button>
         <h1>{name}</h1>

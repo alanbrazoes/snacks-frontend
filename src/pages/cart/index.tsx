@@ -8,7 +8,7 @@ import { ProductCart } from '@components/ProductCart';
 
 const Cart: NextPage = () => {
   return (
-    <>
+    <div>
       <Header>
         <Link href="/">
           <p className="text-2xl opacity-90 p-2 hover:bg-background rounded">Home</p>
@@ -17,7 +17,7 @@ const Cart: NextPage = () => {
       <main className="flex items-center flex-col h-full">
         <ProductCart />
       </main>
-    </>
+    </div>
   );
 };
 
