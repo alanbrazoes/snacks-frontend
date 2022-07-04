@@ -1,21 +1,13 @@
-import api from '@services/index';
+import { api } from '@services/index';
+import { IDrink } from '@types';
 
-export default {
-  async getAllDrinks() {
-    try {
-      const response = await api.get('/drinks');
-      return response.data;
-    } catch (error) {
-      return false;
-    }
-  },
-
-  async getDrink(id: string) {
-    try {
-      const response = await api.get(`/drink/${id}`);
-      return response.data;
-    } catch (error) {
-      return false;
-    }
-  },
+const getDrinkById = async (id: string): Promise<IDrink | false> => {
+  try {
+    const { data } = await api.get(`/drink/${id}`);
+    return data;
+  } catch (error) {
+    return false;
+  }
 };
+
+export { getDrinkById };

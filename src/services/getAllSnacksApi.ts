@@ -1,10 +1,9 @@
-import api from '@services/index';
+import { api } from '@services/index';
+import { IAllSnacks } from '@types';
 
-export const getAllSnacks = async () => {
-  try {
-    const response = await api.get('/');
-    return response.data;
-  } catch (error) {
-    return false;
-  }
+const getAllSnacks = async (): Promise<IAllSnacks> => {
+  const { data } = await api.get('/');
+  return data;
 };
+
+export { getAllSnacks };

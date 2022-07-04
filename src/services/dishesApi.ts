@@ -1,10 +1,13 @@
-import api from '@services/index';
+import { api } from '@services/index';
+import { IDishes } from '@types';
 
-export const getAllDishes = async () => {
+const getDishById = async (id: string): Promise<IDishes | false> => {
   try {
-    const { data, status } = await api.get('/dishes');
-    return { data, status };
+    const { data } = await api.get(`/dishes/${id}`);
+    return data;
   } catch (error) {
     return false;
   }
 };
+
+export { getDishById };
