@@ -25,7 +25,7 @@ const Home: NextPage<IAllSnacks> = ({ hamburguers, dishes, drink }) => {
             <div className="flex justify-center flex-col">
               <h2 className="filter_buttons">Hamburguers</h2>
               <div className="products_section">
-                {hamburguers.map(({ name, _id, price }) => (
+                {hamburguers?.map(({ name, _id, price }) => (
                   <Snack name={name} _id={_id} key={_id} price={price} />
                 ))}
               </div>
@@ -33,7 +33,7 @@ const Home: NextPage<IAllSnacks> = ({ hamburguers, dishes, drink }) => {
             <div className="flex justify-center flex-col">
               <h2 className="filter_buttons">Pratos</h2>
               <div className="products_section">
-                {dishes.map(({ name, _id, price }) => (
+                {dishes?.map(({ name, _id, price }) => (
                   <Snack name={name} _id={_id} key={_id} price={price} />
                 ))}
               </div>
@@ -42,7 +42,7 @@ const Home: NextPage<IAllSnacks> = ({ hamburguers, dishes, drink }) => {
             <div className="flex justify-center flex-col">
               <h2 className="filter_buttons">Bebidas</h2>
               <div className="products_section">
-                {drink.map(({ name, _id, price }) => (
+                {drink?.map(({ name, _id, price }) => (
                   <Snack name={name} _id={_id} key={_id} price={price} />
                 ))}
               </div>

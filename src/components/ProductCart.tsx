@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import Image from 'next/image';
+import Link from 'next/link';
 
 import { useCart } from '@context/cart';
 
@@ -80,7 +81,9 @@ const ProductCart: React.FC = () => {
           Total: R$ {total}
         </p>
         <button className="text-background font-semibold text-3xl" data-testid="finish">
-          <a href="/checkout">Finalizar pedido</a>
+          <Link href="/checkout" aria-label="redirect to checkout">
+            Finalizar pedido
+          </Link>
         </button>
       </div>
     </section>
