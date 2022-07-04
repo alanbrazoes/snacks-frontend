@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 
-import Image from 'next/image';
 import Link from 'next/link';
 
 import { useCart } from '@context/cart';
@@ -11,7 +10,6 @@ interface ICom {
   name: string;
   _id: string;
   price: number;
-  setShow: () => void;
 }
 
 const Snack: React.FC<ICom> = ({ name, _id, price }): JSX.Element => {

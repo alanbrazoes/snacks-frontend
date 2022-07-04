@@ -1,17 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import type { GetServerSideProps, NextPage } from 'next';
 import Link from 'next/link';
 
 import { Header } from '@components/Header';
-import { Modal } from '@components/Modal';
 import { Snack } from '@components/Snacks';
 import { getAllSnacks } from '@services/getAllSnacksApi';
 import { IAllSnacks } from '@types';
 
 const Home: NextPage<IAllSnacks> = ({ hamburguers, dishes, drink }) => {
-  const [show, setShow] = useState(false);
-
   return (
     <>
       <Header>
@@ -29,13 +26,7 @@ const Home: NextPage<IAllSnacks> = ({ hamburguers, dishes, drink }) => {
               <h2 className="filter_buttons">Hamburguers</h2>
               <div className="products_section">
                 {hamburguers?.map(({ name, _id, price }) => (
-                  <Snack
-                    name={name}
-                    _id={_id}
-                    key={_id}
-                    price={price}
-                    setShow={() => setShow(true)}
-                  />
+                  <Snack name={name} _id={_id} key={_id} price={price} />
                 ))}
               </div>
             </div>
@@ -43,13 +34,7 @@ const Home: NextPage<IAllSnacks> = ({ hamburguers, dishes, drink }) => {
               <h2 className="filter_buttons">Pratos</h2>
               <div className="products_section">
                 {dishes?.map(({ name, _id, price }) => (
-                  <Snack
-                    name={name}
-                    _id={_id}
-                    key={_id}
-                    price={price}
-                    setShow={() => setShow(true)}
-                  />
+                  <Snack name={name} _id={_id} key={_id} price={price} />
                 ))}
               </div>
             </div>
@@ -58,13 +43,7 @@ const Home: NextPage<IAllSnacks> = ({ hamburguers, dishes, drink }) => {
               <h2 className="filter_buttons">Bebidas</h2>
               <div className="products_section">
                 {drink?.map(({ name, _id, price }) => (
-                  <Snack
-                    name={name}
-                    _id={_id}
-                    key={_id}
-                    price={price}
-                    setShow={() => setShow(true)}
-                  />
+                  <Snack name={name} _id={_id} key={_id} price={price} />
                 ))}
               </div>
             </div>
