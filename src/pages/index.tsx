@@ -48,6 +48,7 @@ const Home: NextPage<IAllSnacks> = ({ hamburguers, dishes, drink }) => {
               </div>
             </div>
           </section>
+          {/* <Modal show={show} onClose={() => setShow(false)} /> */}
         </main>
       </>
     </>

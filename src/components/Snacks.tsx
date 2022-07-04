@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import Image from 'next/image';
 import Link from 'next/link';
 
 import { useCart } from '@context/cart';
-import { ISnack, IDrink, IDishes } from '@types';
 
-const Snack: React.FC<ISnack | IDishes | IDrink> = ({ name, _id, price }): JSX.Element => {
+import { Modal } from './Modal';
+
+interface ICom {
+  name: string;
+  _id: string;
+  price: number;
+}
+
+const Snack: React.FC<ICom> = ({ name, _id, price }): JSX.Element => {
   const { cart, setCart } = useCart();
+  const [show, setShow] = useState(false);
 
   const addProductCart = () => {
     setCart([...cart, { name, _id, price, quantity: 1 }]);
@@ -20,19 +27,18 @@ const Snack: React.FC<ISnack | IDishes | IDrink> = ({ name, _id, price }): JSX.E
     >
       <div className="p-2">
         <h2 className="text-primary font-semibold text-xl">{name}</h2>
-        <Link href={`/burguer/${_id}`}>{`R$ ${price},00`}</Link>
+        <button onClick={() => setShow(true)}>{`R$ ${price},00`}</button>
         <button onClick={addProductCart} className="block text-primary hover:underline">
           Adicionar ao carrinho
         </button>
       </div>
       <Link href={`/burguer/${_id}`}>
-        <Image
+        <img
           src="/img/burguer.jpg"
-          width="100"
-          height="100"
-          className="rounded-tr-sm rounded-br-sm hover:cursor-pointer"
+          className="rounded-tr-sm w-28 rounded-br-sm hover:cursor-pointer"
         />
       </Link>
+      <Modal show={show} onClose={() => setShow(false)} name={name} />
     </div>
   );
 };
