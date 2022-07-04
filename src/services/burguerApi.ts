@@ -1,4 +1,4 @@
-import api from '@services/index';
+import { api } from '@services/index';
 import { ISnack } from '@types';
 
 const getBurguerById = async (id: string): Promise<ISnack | false> => {

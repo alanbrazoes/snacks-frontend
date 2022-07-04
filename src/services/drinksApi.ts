@@ -1,4 +1,4 @@
-import api from '@services/index';
+import { api } from '@services/index';
 import { IDrink } from '@types';
 
 const getDrinkById = async (id: string): Promise<IDrink | false> => {

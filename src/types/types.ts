@@ -10,7 +10,7 @@ interface IDrink {
   name: string;
   price: number;
   type: string;
-  _id?: string;
+  _id: string;
 }
 
 interface IDishes {

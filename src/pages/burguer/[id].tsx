@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
 
-import api from '@services/index';
+import { api } from '@services/index';
 import { ISnack } from '@types';
 
 const BurguerDetails: NextPage = () => {
