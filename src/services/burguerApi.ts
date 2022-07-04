@@ -1,19 +1,13 @@
 import api from '@services/index';
+import { ISnack } from '@types';
 
-export const getAllBurguers = async () => {
+const getBurguerById = async (id: string): Promise<ISnack | false> => {
   try {
-    const response = await api.get('/burguers');
-    return response.data;
+    const { data } = await api.get(`/burguer/${id}`);
+    return data;
   } catch (error) {
     return false;
   }
 };
 
-export const getBurguer = async (id: string) => {
-  try {
-    const response = await api.get(`/burguer/${id}`);
-    return response.data;
-  } catch (error) {
-    return false;
-  }
-};
+export { getBurguerById };

@@ -6,15 +6,11 @@ interface ISnack {
   price: number;
 }
 
-interface IPropsSnacksContext {
-  snacks: ISnack[];
-  setSnacks: React.Dispatch<React.SetStateAction<ISnack[]>>;
-}
-
 interface IDrink {
   name: string;
   price: number;
-  _id: string;
+  type: string;
+  _id?: string;
 }
 
 interface IDishes {
@@ -32,4 +28,4 @@ interface IAllSnacks {
   drink: IDrink[];
 }
 
-export type { ISnack, IPropsSnacksContext, IDrink, IDishes, IAllSnacks };
+export type { ISnack, IDrink, IDishes, IAllSnacks };
