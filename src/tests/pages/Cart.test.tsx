@@ -25,8 +25,10 @@ describe('Cart page.', () => {
 
     const homeBtn = getByText(/home/i);
     const products = getByTestId(/products/i);
+    const checkout = getByTestId('finish');
 
     expect(homeBtn).toBeInTheDocument();
     expect(products).toBeInTheDocument();
+    expect(checkout).toBeInTheDocument();
   });
 });

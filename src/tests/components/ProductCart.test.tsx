@@ -35,9 +35,6 @@ describe('Product cart.', () => {
 
     const removeBtn = getAllByTestId(/removeBtn/i);
     expect(removeBtn).toBeTruthy();
-
-    const finishBtn = getByTestId(/finish/i);
-    expect(finishBtn).toBeInTheDocument();
   });
 
   it('Button add.', () => {

@@ -1,23 +1,27 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import Link from 'next/link';
 
 import { useCart } from '@context/cart';
+import { IBurguer, IDrink, IDish } from '@types';
 
-import { Modal } from './Modal';
-
-interface ICom {
-  name: string;
-  _id: string;
-  price: number;
-}
-
-const Snack: React.FC<ICom> = ({ name, _id, price }): JSX.Element => {
+const Snack: React.FC<IBurguer | IDish | IDrink> = ({ name, _id, price }): JSX.Element => {
   const { cart, setCart } = useCart();
-  const [show, setShow] = useState(false);
 
   const addProductCart = () => {
-    setCart([...cart, { name, _id, price, quantity: 1 }]);
+    const alreadyExist = cart.some(({ _id: id }) => id === _id);
+    let newSnack = [...cart, { name, _id, price, quantity: 1 }];
+
+    if (alreadyExist) {
+      newSnack = cart.map((product) => {
+        if (product._id === _id) {
+          return { ...product, quantity: product.quantity + 1 };
+        }
+        return product;
+      });
+    }
+
+    setCart(newSnack);
   };
 
   return (
@@ -27,7 +31,7 @@ const Snack: React.FC<ICom> = ({ name, _id, price }): JSX.Element => {
     >
       <div className="p-2">
         <h2 className="text-primary font-semibold text-xl">{name}</h2>
-        <button onClick={() => setShow(true)}>{`R$ ${price},00`}</button>
+        <Link href={`/snack/${_id}`}>{`R$ ${price},00`}</Link>
         <button onClick={addProductCart} className="block text-primary hover:underline">
           Adicionar ao carrinho
         </button>
@@ -38,7 +42,6 @@ const Snack: React.FC<ICom> = ({ name, _id, price }): JSX.Element => {
           className="rounded-tr-sm w-28 rounded-br-sm hover:cursor-pointer"
         />
       </Link>
-      <Modal show={show} onClose={() => setShow(false)} name={name} />
     </div>
   );
 };
