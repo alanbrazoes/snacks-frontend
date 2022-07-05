@@ -1,4 +1,4 @@
-interface ISnack {
+interface IBurguer {
   _id: string;
   name: string;
   preparationTime?: number;
@@ -13,19 +13,18 @@ interface IDrink {
   _id: string;
 }
 
-interface IDishes {
+interface IDish {
   _id: string;
   name: string;
   price: number;
-  ingredientList?: string[];
+  ingredients?: string[];
   preparationTime?: number;
   type?: string;
 }
 
 interface IAllSnacks {
-  hamburguers: ISnack[];
-  dishes: IDishes[];
-  drink: IDrink[];
+  hamburguers: IBurguer[];
+  dishes: IDish[];
 }
 
-export type { ISnack, IDrink, IDishes, IAllSnacks };
+export type { IBurguer, IDrink, IDish, IAllSnacks };

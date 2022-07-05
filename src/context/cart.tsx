@@ -35,6 +35,6 @@ const CartContext: React.FC = ({ children }) => {
   return <context.Provider value={{ cart, setCart }}>{children}</context.Provider>;
 };
 
-export const useCart = () => useContext(context);
+const useCart = () => useContext(context);
 
-export { CartContext };
+export { CartContext, useCart };

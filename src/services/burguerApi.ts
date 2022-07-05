@@ -1,7 +1,7 @@
 import { api } from '@services/index';
-import { ISnack } from '@types';
+import { IBurguer } from '@types';
 
-const getBurguerById = async (id: string): Promise<ISnack | false> => {
+const getBurguerById = async (id: string): Promise<IBurguer | false> => {
   try {
     const { data } = await api.get(`/burguer/${id}`);
     return data;
