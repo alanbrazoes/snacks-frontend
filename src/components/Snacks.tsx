@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import Image from 'next/image';
 import Link from 'next/link';
 
 import { useCart } from '@context/cart';
@@ -8,6 +7,7 @@ import { IBurguer, IDrink, IDish } from '@types';
 
 const Snack: React.FC<IBurguer | IDish | IDrink> = ({ name, _id, price }): JSX.Element => {
   const { cart, setCart } = useCart();
+  const [show, setShow] = useState(false);
 
   const addProductCart = () => {
     const alreadyExist = cart.some(({ _id: id }) => id === _id);
@@ -38,13 +38,12 @@ const Snack: React.FC<IBurguer | IDish | IDrink> = ({ name, _id, price }): JSX.E
         </button>
       </div>
       <Link href={`/burguer/${_id}`}>
-        <Image
+        <img
           src="/img/burguer.jpg"
-          width="100"
-          height="100"
-          className="rounded-tr-sm rounded-br-sm hover:cursor-pointer"
+          className="rounded-tr-sm w-28 rounded-br-sm hover:cursor-pointer"
         />
       </Link>
+      <Modal show={show} onClose={() => setShow(false)} name={name} />
     </div>
   );
 };
