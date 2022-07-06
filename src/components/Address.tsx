@@ -28,10 +28,6 @@ const Address: React.FC = () => {
             Cidade
             <input></input>
           </label>
-          <label>
-            Estado
-            <input></input>
-          </label>
 
           <button type="submit">Confirmar endereço</button>
         </fieldset>
