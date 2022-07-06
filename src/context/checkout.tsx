@@ -30,11 +30,7 @@ const context = createContext({} as ICheckoutState);
 
 const CheckoutContext: React.FC = ({ children }) => {
   const [address, setAddress] = useState<IAddress>({} as IAddress);
-  const [method, setMethod] = useState<IMethod>({
-    method: 'card',
-    isReturnCash: false,
-    returnCash: 0,
-  });
+  const [method, setMethod] = useState<IMethod>({} as IMethod);
 
   return (
     <context.Provider value={{ address, method, setAddress, setMethod }}>

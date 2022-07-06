@@ -11,33 +11,34 @@ interface IPayment {
 const PaymentMethod: React.FC<IPayment> = ({ payment, setMethod, handleChange }) => {
   return (
     <section>
-      <form className="flex flex-col border border-1 w-fit">
-        <legend>Método de pagamento</legend>
-        <label>
-          <input
-            type="radio"
-            value="card"
-            checked={payment.method === 'card'}
-            onChange={() => setMethod({ ...payment, method: 'card' })}
-          ></input>
-          Cartão
-        </label>
-        <label>
-          <input
-            type="radio"
-            value="card"
-            checked={payment.method === 'cash'}
-            onChange={() => setMethod({ ...payment, method: 'cash' })}
-          ></input>
-          Dinheiro
-        </label>
-        {payment.method === 'cash' ? (
+      <form className="flex justify-center">
+        <fieldset className="flex flex-col border border-1 w-3/5 p-4 rounded">
+          <legend>Método de pagamento</legend>
           <label>
-            Troco para:
-            <input type="number" value={payment.returnCash} onChange={handleChange}></input>
+            <input
+              type="radio"
+              value="card"
+              checked={payment.method === 'card'}
+              onChange={() => setMethod({ ...payment, method: 'card' })}
+            ></input>
+            Cartão
           </label>
-        ) : null}
-        <button type="submit">Confirmar</button>
+          <label>
+            <input
+              type="radio"
+              value="card"
+              checked={payment.method === 'cash'}
+              onChange={() => setMethod({ ...payment, method: 'cash' })}
+            ></input>
+            Dinheiro
+          </label>
+          {payment.method === 'cash' ? (
+            <label>
+              Troco para:
+              <input type="number" value={payment.returnCash} onChange={handleChange}></input>
+            </label>
+          ) : null}
+        </fieldset>
       </form>
     </section>
   );
