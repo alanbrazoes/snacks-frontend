@@ -1,14 +1,16 @@
 import type { AppProps } from 'next/app';
 
-import { CartContext } from '@context/cart';
-
 import '@style/main.css';
+import { CartContext } from '@context/cart';
+import { CheckoutContext } from '@context/checkout';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <CartContext>
-      <Component {...pageProps} />
-    </CartContext>
+    <CheckoutContext>
+      <CartContext>
+        <Component {...pageProps} />
+      </CartContext>
+    </CheckoutContext>
   );
 }
 

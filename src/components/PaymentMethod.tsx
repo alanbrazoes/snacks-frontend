@@ -1,18 +1,43 @@
-import * as React from 'react';
+import React from 'react';
 
-const PaymentMethod: React.FC = () => {
+import { IMethod } from '@pages/checkout';
+
+interface IPayment {
+  payment: IMethod;
+  setMethod: React.Dispatch<React.SetStateAction<IMethod>>;
+  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+const PaymentMethod: React.FC<IPayment> = ({ payment, setMethod, handleChange }) => {
   return (
     <section>
-      <h1>Método de pagamento</h1>
-      <form>
+      <form className="flex flex-col border border-1 w-fit">
+        <legend>Método de pagamento</legend>
         <label>
+          <input
+            type="radio"
+            value="card"
+            checked={payment.method === 'card'}
+            onChange={() => setMethod({ ...payment, method: 'card' })}
+          ></input>
           Cartão
-          <input type="radio"></input>
         </label>
         <label>
+          <input
+            type="radio"
+            value="card"
+            checked={payment.method === 'cash'}
+            onChange={() => setMethod({ ...payment, method: 'cash' })}
+          ></input>
           Dinheiro
-          <input type="radio"></input>
         </label>
+        {payment.method === 'cash' ? (
+          <label>
+            Troco para:
+            <input type="number" value={payment.returnCash} onChange={handleChange}></input>
+          </label>
+        ) : null}
+        <button type="submit">Confirmar</button>
       </form>
     </section>
   );
