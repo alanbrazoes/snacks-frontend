@@ -20,8 +20,6 @@ describe('Checkout page.', () => {
   it('Address forms.', () => {
     const { getByLabelText, getByRole } = render(<Checkout />);
 
-    const getByLocation = getByRole('button', { name: 'Obter localização atual' });
-
     const road = getByLabelText('Rua');
     const number = getByLabelText('Número');
     const district = getByLabelText('Bairro');
@@ -30,7 +28,6 @@ describe('Checkout page.', () => {
     const state = getByLabelText('Estado');
     const confirmAddress = getByRole('button', { name: 'Confirmar endereço' });
 
-    expect(getByLocation).toBeInTheDocument();
     expect(road).toBeInTheDocument();
     expect(number).toBeInTheDocument();
     expect(district).toBeInTheDocument();
