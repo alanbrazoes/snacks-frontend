@@ -22,6 +22,10 @@
   .inputs {
     @apply block border-2 px-2 py-1
   }
+
+  .input_error {
+    @apply text-error-700
+  }
 }
 
 #__next {

@@ -6,57 +6,63 @@ import { NextPage } from 'next';
 import { Address } from '@components/Address';
 import { Header } from '@components/Header';
 import { PaymentMethod } from '@components/PaymentMethod';
-import { IAddress, useCheckout } from '@context/checkout';
 
 export interface IMethod {
-  method: 'cash' | 'card';
+  method: string;
   isReturnCash: boolean;
   returnCash: number;
 }
 
+export interface ICheckout {
+  payment: {
+    method: string;
+    isReturnCash: boolean;
+    returnCash: number;
+  };
+  address: {
+    street: string;
+    number: number;
+    complement: number;
+    district: string;
+    city: string;
+  };
+}
+
 const Checkout: NextPage = () => {
-  const { setMethod: setPayment, setAddress } = useCheckout();
+  const [payment, setPayment] = useState<IMethod>({} as IMethod);
   const {
     handleSubmit,
     register,
     formState: { errors },
-  } = useForm<IAddress>();
+  } = useForm<ICheckout>();
 
-  const [method, setMethod] = useState<IMethod>({
-    method: 'card',
-    isReturnCash: false,
-    returnCash: 0,
-  });
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setMethod({ ...method, returnCash: Number(e.target.value) });
+  const submitAddress: SubmitHandler<ICheckout> = (data) => {
+    console.log(data);
   };
 
-  const submitPayment = () => {
-    setPayment(method);
-  };
-
-  const submitAddress: SubmitHandler<IAddress> = (data) => {
-    setAddress({ ...data, number: Number(data.number) });
+  const chancgePayment = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPayment({ ...payment, method: e.target.value });
   };
 
   return (
     <>
       <Header />
       <main>
-        <Address
-          register={register}
-          errors={errors}
-          handleSubmit={handleSubmit}
-          submitAddress={submitAddress}
-        />
-        <PaymentMethod payment={method} setMethod={setMethod} handleChange={handleChange} />
-        <section>
-          <p data-testid="total">Total: 0</p>
-          <button data-testid="checkoutDone" onClick={submitPayment}>
-            Finalizar pedido
-          </button>
-        </section>
+        <form onSubmit={handleSubmit(submitAddress)} className="flex flex-col items-center">
+          <Address register={register} errors={errors} />
+          <PaymentMethod
+            register={register}
+            errors={errors}
+            value={payment}
+            chancgePayment={chancgePayment}
+          />
+          <section>
+            <p data-testid="total">Total: 0</p>
+            <button type="submit" data-testid="checkoutDone">
+              Finalizar pedido
+            </button>
+          </section>
+        </form>
       </main>
     </>
   );
