@@ -13,7 +13,7 @@ interface IPayment {
 const PaymentMethod: React.FC<IPayment> = ({ register, errors, value, chancgePayment }) => {
   return (
     <fieldset className="forms">
-      <legend>Método de pagamento</legend>
+      <legend data-testid="paymentMethod">Método de pagamento</legend>
       <label>
         <input
           type="radio"

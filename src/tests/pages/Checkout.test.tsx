@@ -18,21 +18,19 @@ describe('Checkout page.', () => {
   });
 
   it('Address forms.', () => {
-    const { getByLabelText, getByRole } = render(<Checkout />);
+    const { getByLabelText } = render(<Checkout />);
 
     const road = getByLabelText('Rua:');
     const number = getByLabelText('Número:');
     const district = getByLabelText('Bairro:');
     const complement = getByLabelText('Complemento: (opcional)');
     const city = getByLabelText('Cidade:');
-    const confirmAddress = getByRole('button', { name: 'Confirmar endereço' });
 
     expect(road).toBeInTheDocument();
     expect(number).toBeInTheDocument();
     expect(district).toBeInTheDocument();
     expect(complement).toBeInTheDocument();
     expect(city).toBeInTheDocument();
-    expect(confirmAddress).toBeInTheDocument();
   });
 
   it('Payment methods', () => {
