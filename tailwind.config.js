@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const color = require('tailwindcss/colors');
+
 module.exports = {
   content: ['./src/pages/**/*tsx', './src/components/**/*tsx'],
   theme: {
@@ -18,6 +20,9 @@ module.exports = {
       xl: '1480px',
     },
     extend: {
+      colors: {
+        error: color.red,
+      },
       typography: (theme) => ({
         DEFAULT: {
           css: {

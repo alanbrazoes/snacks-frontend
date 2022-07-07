@@ -1,46 +1,57 @@
 import React from 'react';
+import { DeepRequired, FieldErrorsImpl, UseFormRegister } from 'react-hook-form';
 
-import { IMethod } from '@pages/checkout';
+import { ICheckout, IMethod } from '@pages/checkout';
 
 interface IPayment {
-  payment: IMethod;
-  setMethod: React.Dispatch<React.SetStateAction<IMethod>>;
-  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  register: UseFormRegister<ICheckout>;
+  errors: FieldErrorsImpl<DeepRequired<ICheckout>>;
+  value: IMethod;
+  chancgePayment: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const PaymentMethod: React.FC<IPayment> = ({ payment, setMethod, handleChange }) => {
+const PaymentMethod: React.FC<IPayment> = ({ register, errors, value, chancgePayment }) => {
   return (
-    <section>
-      <form className="flex justify-center">
-        <fieldset className="forms">
-          <legend data-testid="paymentMethod">Método de pagamento</legend>
-          <label>
-            <input
-              type="radio"
-              value="card"
-              checked={payment.method === 'card'}
-              onChange={() => setMethod({ ...payment, method: 'card' })}
-            ></input>
-            Cartão
-          </label>
-          <label>
-            <input
-              type="radio"
-              value="card"
-              checked={payment.method === 'cash'}
-              onChange={() => setMethod({ ...payment, method: 'cash' })}
-            ></input>
-            Dinheiro
-          </label>
-          {payment.method === 'cash' ? (
-            <label>
-              Troco para:
-              <input type="number" value={payment.returnCash} onChange={handleChange}></input>
-            </label>
-          ) : null}
-        </fieldset>
-      </form>
-    </section>
+    <fieldset className="forms">
+      <legend>Método de pagamento</legend>
+      <label>
+        <input
+          type="radio"
+          {...register('payment.method', {
+            onChange: chancgePayment,
+            required: value.method !== ('cash' || 'card'),
+          })}
+          value="cash"
+          checked={value.method === 'cash'}
+        />
+        Dinheiro
+      </label>
+      <label>
+        <input
+          type="radio"
+          {...register('payment.method', {
+            onChange: chancgePayment,
+            required: value.method !== ('cash' || 'card'),
+          })}
+          value="card"
+          checked={value.method === 'card'}
+        />
+        Cartão
+      </label>
+      {value.method === 'cash' ? (
+        <label>
+          Troco para:
+          <input
+            {...register('payment.returnCash', {
+              required: value.method === 'cash',
+            })}
+            value={value.returnCash}
+          />
+        </label>
+      ) : null}
+      {errors.payment?.method && <p className="input_error">Campo obrigatório</p>}
+      {errors.payment?.returnCash && <p className="input_error">Campo obrigatório</p>}
+    </fieldset>
   );
 };
 

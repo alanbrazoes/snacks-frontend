@@ -1,75 +1,62 @@
 import React from 'react';
-import {
-  DeepRequired,
-  FieldErrorsImpl,
-  SubmitHandler,
-  UseFormHandleSubmit,
-  UseFormRegister,
-} from 'react-hook-form';
+import { DeepRequired, FieldErrorsImpl, UseFormRegister } from 'react-hook-form';
 
-import { IAddress } from '@context/checkout';
+import { ICheckout } from '@pages/checkout';
 
 interface IAddressForm {
-  register: UseFormRegister<IAddress>;
-  errors: FieldErrorsImpl<DeepRequired<IAddress>>;
-  handleSubmit: UseFormHandleSubmit<IAddress>;
-  submitAddress: SubmitHandler<IAddress>;
+  register: UseFormRegister<ICheckout>;
+  errors: FieldErrorsImpl<DeepRequired<ICheckout>>;
 }
-const Address: React.FC<IAddressForm> = ({ register, errors, handleSubmit, submitAddress }) => {
+const Address: React.FC<IAddressForm> = ({ register, errors: { address } }) => {
   return (
-    <section>
-      <form className="flex justify-center" onSubmit={handleSubmit(submitAddress)}>
-        <fieldset className="forms">
-          <legend data-testid="address">Endereço</legend>
-          <label className="labels">
-            Rua:
-            <input
-              {...register('street', { required: true })}
-              className="inputs"
-              placeholder="Ex: Antônio SIlva"
-            ></input>
-            {errors.street && <p>Campo obrigatório</p>}
-          </label>
-          <label className="labels">
-            Número:
-            <input
-              {...register('number', { required: true })}
-              className="inputs"
-              placeholder="Ex: 178"
-            ></input>
-            {errors.number && <p>Campo obrigatório</p>}
-          </label>
-          <label className="labels">
-            Complemento: (opcional)
-            <input
-              {...register('complement', { required: false })}
-              className="inputs"
-              placeholder="Ex: apartamento 503"
-            ></input>
-            {errors.complement && <p>Campo obrigatório</p>}
-          </label>
-          <label className="labels">
-            Bairro:
-            <input
-              {...register('district', { required: true })}
-              className="inputs"
-              placeholder="Ex: Pampulha"
-            ></input>
-            {errors.district && <p>Campo obrigatório</p>}
-          </label>
-          <label className="labels">
-            Cidade:
-            <input
-              {...register('city', { required: true })}
-              className="inputs"
-              placeholder="Ex: Belo Horizonte"
-            ></input>
-            {errors.city && <p>Campo obrigatório</p>}
-          </label>
-          <button type="submit">Confirmar endereço</button>
-        </fieldset>
-      </form>
-    </section>
+    <fieldset className="forms">
+      <legend data-testid="address">Endereço</legend>
+      <label className="labels">
+        Rua:
+        <input
+          {...register('address.street', { required: true })}
+          className="inputs"
+          placeholder="Ex: Antônio SIlva"
+        ></input>
+        {address?.street && <p className="input_error">Campo obrigatório</p>}
+      </label>
+      <label className="labels">
+        Número:
+        <input
+          {...register('address.number', { required: true })}
+          className="inputs"
+          placeholder="Ex: 178"
+        ></input>
+        {address?.number && <p className="input_error">Campo obrigatório</p>}
+      </label>
+      <label className="labels">
+        Complemento: (opcional)
+        <input
+          {...register('address.complement', { required: false })}
+          className="inputs"
+          placeholder="Ex: apartamento 503"
+        ></input>
+        {address?.complement && <p className="input_error">Campo obrigatório</p>}
+      </label>
+      <label className="labels">
+        Bairro:
+        <input
+          {...register('address.district', { required: true })}
+          className="inputs"
+          placeholder="Ex: Pampulha"
+        ></input>
+        {address?.district && <p className="input_error">Campo obrigatório</p>}
+      </label>
+      <label className="labels">
+        Cidade:
+        <input
+          {...register('address.city', { required: true })}
+          className="inputs"
+          placeholder="Ex: Belo Horizonte"
+        ></input>
+        {address?.city && <p className="input_error">Campo obrigatório</p>}
+      </label>
+    </fieldset>
   );
 };
 
