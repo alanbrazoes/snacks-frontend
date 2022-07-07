@@ -13,7 +13,7 @@ const PaymentMethod: React.FC<IPayment> = ({ payment, setMethod, handleChange })
     <section>
       <form className="flex justify-center">
         <fieldset className="forms">
-          <legend>Método de pagamento</legend>
+          <legend data-testid="paymentMethod">Método de pagamento</legend>
           <label>
             <input
               type="radio"

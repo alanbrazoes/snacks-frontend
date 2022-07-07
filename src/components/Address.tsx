@@ -20,7 +20,7 @@ const Address: React.FC<IAddressForm> = ({ register, errors, handleSubmit, submi
     <section>
       <form className="flex justify-center" onSubmit={handleSubmit(submitAddress)}>
         <fieldset className="forms">
-          <legend>Endereço</legend>
+          <legend data-testid="address">Endereço</legend>
           <label className="labels">
             Rua:
             <input
