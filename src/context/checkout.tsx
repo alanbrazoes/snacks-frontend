@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState } from 'react';
 
-interface IAddress {
+export interface IAddress {
   street: string;
   number: number;
   complement: number;

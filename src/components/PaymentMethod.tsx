@@ -12,7 +12,7 @@ const PaymentMethod: React.FC<IPayment> = ({ payment, setMethod, handleChange })
   return (
     <section>
       <form className="flex justify-center">
-        <fieldset className="flex flex-col border border-1 w-3/5 p-4 rounded">
+        <fieldset className="forms">
           <legend>Método de pagamento</legend>
           <label>
             <input
